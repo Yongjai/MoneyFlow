@@ -1,0 +1,24 @@
+//
+//  IncomeTableViewCell.m
+//  Money_Flow
+//
+//  Created by YongJai on 28/07/2017.
+//  Copyright © 2017 YongJai. All rights reserved.
+//
+
+#import "IncomeTableViewCell.h"
+
+@implementation IncomeTableViewCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

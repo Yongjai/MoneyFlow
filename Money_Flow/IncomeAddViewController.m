@@ -7,6 +7,7 @@
 //
 
 #import "IncomeAddViewController.h"
+#import "Income.h"
 
 @interface IncomeAddViewController ()
 
@@ -24,6 +25,15 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)clickedDismissBtn:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)clickedInputBtn:(id)sender {
+    Income *income = [[Income alloc] init];
+    income.price = _priceTextField.text;
+    income.time = [NSDate date];
+    income.category = @"test";
+    [income incomeAdd];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

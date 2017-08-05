@@ -21,13 +21,29 @@
 @interface MainViewController ()
 @end
 
-@implementation MainViewController
+@implementation MainViewController {
+    RLMResults<Income*> *incomeList;
+    RLMResults<Outgoing*> *outgoingList;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _inputTableView.dataSource = self;
     _outputTableView.dataSource = self;
     [self presentFirstCalendar];
+    
+    incomeList = [Income allObjects];
+    outgoingList = [Outgoing allObjects];
+    
+    NSNotificationCenter *incomeNoti = [NSNotificationCenter defaultCenter];
+    [incomeNoti addObserver:self selector:@selector(reloadIncomeTableView) name:@"INCOME_ADDED" object:nil];
+    
+    NSNotificationCenter *outgoingNoti = [NSNotificationCenter defaultCenter];
+    [outgoingNoti addObserver:self selector:@selector(reloadOutgoingTableView) name:@"OUTGOING_ADDED" object:nil];
+    
+    [self reloadIncomeTableView];
+    [self reloadOutgoingTableView];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,9 +88,9 @@
     for (int startDay = 1; startDay <= _dayNum; startDay++) {
         UIButton *dayNumBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
         
-        if (startDay % 2 == 0) {
-            dayNumBtn.backgroundColor = [UIColor colorWithRed:214.0f/255.0f green:214.0f/255.0f blue:214.0f/255.0f alpha:1.0];
-        }
+//        if (startDay % 2 == 0) {
+//            dayNumBtn.backgroundColor = [UIColor colorWithRed:214.0f/255.0f green:214.0f/255.0f blue:214.0f/255.0f alpha:1.0];
+//        }
         
         dayNumBtn.layer.borderWidth = 1.0f;
         dayNumBtn.layer.borderColor = [UIColor grayColor].CGColor;
@@ -168,8 +184,20 @@
 ////////////////////
 // TableView Part //
 ////////////////////
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4; 
+    NSInteger rows = 0;
+    
+    if (tableView == self.inputTableView) {
+        rows = incomeList.count;
+    }
+    if (tableView == self.outputTableView) {
+        rows = outgoingList.count;
+    }
+    return rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -177,19 +205,30 @@
     static NSString *outputCellIdentifier = @"outgoingCell";
     static NSString *inputCellIdentifier = @"incomeCell";
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    }
+    OutgoingTableViewCell *outgoingCell = [tableView dequeueReusableCellWithIdentifier:outputCellIdentifier forIndexPath:indexPath];
+    IncomeTableViewCell *incomeCell = [tableView dequeueReusableCellWithIdentifier:inputCellIdentifier forIndexPath:indexPath];
     
-    if (tableView == _outputTableView) {
-        cell = [_outputTableView dequeueReusableCellWithIdentifier:outputCellIdentifier];
-        cell.textLabel.text = [NSString stringWithFormat:@"Outgoing Table :%ld", indexPath.row];
-    } else {
-        cell = [_inputTableView dequeueReusableCellWithIdentifier:inputCellIdentifier];
-        cell.textLabel.text = [NSString stringWithFormat:@"Income Table :%ld", indexPath.row];
+    if (tableView == self.outputTableView) {
+        Outgoing *outgoings = [outgoingList objectAtIndex:indexPath.row];
+        cell = [tableView dequeueReusableCellWithIdentifier:outputCellIdentifier forIndexPath:indexPath];
+        outgoingCell.outgoingPriceLabel.text = outgoings.price;
+        outgoingCell.outgoingCategoryLabel.text = outgoings.category;
     }
-    
-    return cell;
+    if (tableView == self.inputTableView) {
+        Income *incomes = [incomeList objectAtIndex:indexPath.row];
+        cell = [tableView dequeueReusableCellWithIdentifier:inputCellIdentifier forIndexPath:indexPath];
+        incomeCell.incomePriceLabel.text = incomes.price;
+        incomeCell.incomeCategoryLabel.text = incomes.category;
+    }
+    return  cell;
+}
+
+- (void) reloadIncomeTableView {
+    [_inputTableView reloadData];
+}
+
+- (void) reloadOutgoingTableView {
+    [_outputTableView reloadData];
 }
 
 ////////////////
@@ -206,6 +245,9 @@
 }
 
 
+- (IBAction)test:(id)sender {
+    [self viewDidLoad];
+}
 
 
 @end

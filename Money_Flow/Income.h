@@ -11,7 +11,7 @@
 
 @interface Income : RLMObject
 
-@property NSDate* date;
+@property NSDate* time;
 @property NSString* price;
 @property NSString* category;
 

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface IncomeAddViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *priceTextField;
 
 @end

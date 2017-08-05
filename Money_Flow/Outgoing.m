@@ -12,21 +12,26 @@
     RLMRealm *realm;
 }
 
-- (instancetype)init
-{
-    self = [super init];
-    if (!self) return nil;
-    
-    realm = [RLMRealm defaultRealm];
-    
-    return self;
-}
+//- (instancetype)init
+//{
+//    self = [super init];
+//    if (!self) return nil;
+//    
+//    realm = [RLMRealm defaultRealm];
+//    
+//    return self;
+//}
+
+//- (NSString *)primaryKey {
+//    return @"pk";
+//}
 
 - (void)outgoingAdd {
     [realm transactionWithBlock:^{
         [realm addOrUpdateObject:self];
     }];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"OUTGOING_ADDED" object:nil];
+    NSLog(@"added");
 }
 
 - (void)outgoingRemove {

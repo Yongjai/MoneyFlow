@@ -7,6 +7,7 @@
 //
 
 #import "OutgoingAddViewController.h"
+#import "Outgoing.h"
 
 @interface OutgoingAddViewController ()
 
@@ -25,6 +26,17 @@
 }
 - (IBAction)clickedDismissBtn:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)clickedInputBtn:(id)sender {
+    Outgoing *outgoing = [[Outgoing alloc] init];
+    outgoing.price = _priceTextField.text;
+    outgoing.time = [NSDate date];
+    outgoing.category = @"test";
+    
+    [outgoing outgoingAdd];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+    NSLog(@"%@", outgoing);
 }
 
 /*

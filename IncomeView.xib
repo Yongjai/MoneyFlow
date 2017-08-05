@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IncomeAddViewController">
             <connections>
+                <outlet property="priceTextField" destination="lQU-ex-ZjR" id="Otn-Xs-n3i"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ZiN-kO-jA4"/>
             </connections>
         </placeholder>
@@ -61,6 +62,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.9848074251592015" green="0.99702380952380953" blue="0.70403884756890323" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="입력"/>
+                    <connections>
+                        <action selector="clickedInputBtn:" destination="-1" eventType="touchUpInside" id="WSL-QQ-cRB"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2017.07.18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwq-gh-ENc">
                     <rect key="frame" x="16" y="30" width="343" height="42"/>
@@ -82,7 +86,7 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.95956897025791521" green="0.95120136303689207" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="34.5" y="53.5"/>
+            <point key="canvasLocation" x="84" y="-3"/>
         </view>
     </objects>
 </document>

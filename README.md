@@ -1,6 +1,3 @@
-# Unfortunately, I moved to Private Repository. 
-
-
 ## Money Flow
 
 This is the repository for the iOS_Adv class project in the second semester of 2017.

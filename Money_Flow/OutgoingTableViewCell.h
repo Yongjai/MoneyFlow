@@ -10,5 +10,6 @@
 
 @interface OutgoingTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 
 @end

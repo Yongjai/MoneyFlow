@@ -32,7 +32,7 @@
     outgoing.price = self.priceTextField.text;
     outgoing.time = [NSDate date];
     outgoing.category = @"test";
-    
+    outgoing.uuid = [[NSUUID UUID] UUIDString];
     [outgoing outgoingAdd];
     [self dismissViewControllerAnimated:YES completion:nil];
 

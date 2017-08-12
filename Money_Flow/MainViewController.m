@@ -10,6 +10,7 @@
 #import "IncomeAddViewController.h"
 #import "OutgoingAddViewController.h"
 #import "OutgoingTableViewCell.h"
+#import "IncomeTableViewCell.h"
 
 //Realm Data Model
 #import "Income.h"
@@ -40,7 +41,7 @@
     [incomeNoti addObserver:self selector:@selector(reloadIncomeTableView) name:@"INCOME_ADDED" object:nil];
     
     NSNotificationCenter *outgoingNoti = [NSNotificationCenter defaultCenter];
-    [outgoingNoti addObserver:self selector:@selector(reload) name:@"OUTGOING_ADDED" object:nil];
+    [outgoingNoti addObserver:self selector:@selector(reloadOutgoingTableView) name:@"OUTGOING_ADDED" object:nil];
     
     NSLog(@"test");
 
@@ -191,21 +192,39 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [outgoingList count];
+    if ([tableView isEqual:_outgoingTableView]) {
+        return [outgoingList count];
+    } else {
+        return [incomeList count];
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdenfier =@"Cell";
-    Outgoing *outgoings = [outgoingList objectAtIndex:indexPath.row];
-    OutgoingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdenfier forIndexPath:indexPath];
+    if ([tableView isEqual:_outgoingTableView]) {
+        OutgoingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        Outgoing *outgoings = [outgoingList objectAtIndex:indexPath.row];
+        cell.priceLabel.text = outgoings.price;
+        cell.categoryLabel.text = outgoings.category;
     
-    cell.priceLabel.text = outgoings.price;
-    
-    return  cell;
+        return cell;
+    } else {
+        IncomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        Income *incomes = [incomeList objectAtIndex:indexPath.row];
+        cell.priceLabel.text = incomes.price;
+        cell.categoryLabel.text = incomes.category;
+        
+        return cell;
+    }
 }
 
+- (void)reloadIncomeTableView {
+    [_incomeTableView reloadData];
+}
 
+- (void)reloadOutgoingTableView {
+    [_outgoingTableView reloadData];
+}
 
 ////////////////
 // Add Button //

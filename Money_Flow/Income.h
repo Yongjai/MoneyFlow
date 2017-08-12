@@ -7,10 +7,11 @@
 //
 
 #import <Realm/Realm.h>
-#import <RLMObject.h>
+#import "RLMObject.h"
 
 @interface Income : RLMObject
 
+@property NSString *uuid;
 @property NSDate* time;
 @property NSString* price;
 @property NSString* category;

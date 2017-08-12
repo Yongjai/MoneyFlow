@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface IncomeTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 
 @end

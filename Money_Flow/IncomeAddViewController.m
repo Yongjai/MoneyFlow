@@ -32,9 +32,13 @@
     income.price = _priceTextField.text;
     income.time = [NSDate date];
     income.category = @"test";
+    income.uuid = [[NSUUID UUID] UUIDString];
+    
     [income incomeAdd];
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"%@", income);
+
 }
 
 /*

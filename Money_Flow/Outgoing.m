@@ -12,19 +12,19 @@
     RLMRealm *realm;
 }
 
-//- (instancetype)init
-//{
-//    self = [super init];
-//    if (!self) return nil;
-//    
-//    realm = [RLMRealm defaultRealm];
-//    
-//    return self;
-//}
+- (instancetype)init
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    realm = [RLMRealm defaultRealm];
+    
+    return self;
+}
 
-//- (NSString *)primaryKey {
-//    return @"pk";
-//}
++ (NSString *)primaryKey {
+    return @"uuid";
+}
 
 - (void)outgoingAdd {
     [realm transactionWithBlock:^{

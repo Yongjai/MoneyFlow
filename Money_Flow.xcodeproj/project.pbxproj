@@ -140,8 +140,8 @@
 		7C362BF51F111ED9001DD528 /* Money_Flow */ = {
 			isa = PBXGroup;
 			children = (
-				7CCE9FFC1F2B6BB00055B12C /* DetailView */,
-				7CCE9FEE1F2B54080055B12C /* DataModel */,
+				7CCE9FFC1F2B6BB00055B12C /* AddDataView */,
+				7CCE9FEE1F2B54080055B12C /* Realm */,
 				7CCE9FB11F2967FE0055B12C /* RatioView */,
 				7CCE9FB01F2967E80055B12C /* GraphView */,
 				7CCE9FAF1F2967D20055B12C /* MainView */,
@@ -210,7 +210,7 @@
 			name = RatioView;
 			sourceTree = "<group>";
 		};
-		7CCE9FEE1F2B54080055B12C /* DataModel */ = {
+		7CCE9FEE1F2B54080055B12C /* Realm */ = {
 			isa = PBXGroup;
 			children = (
 				7CCE9FE81F2B53D20055B12C /* Income.h */,
@@ -218,20 +218,20 @@
 				7CCE9FEB1F2B54010055B12C /* Outgoing.h */,
 				7CCE9FEC1F2B54010055B12C /* Outgoing.m */,
 			);
-			name = DataModel;
+			name = Realm;
 			sourceTree = "<group>";
 		};
-		7CCE9FFC1F2B6BB00055B12C /* DetailView */ = {
+		7CCE9FFC1F2B6BB00055B12C /* AddDataView */ = {
 			isa = PBXGroup;
 			children = (
-				7CCE9FFA1F2B69440055B12C /* OutgoingView.xib */,
 				7CCE9FEF1F2B5E7B0055B12C /* IncomeView.xib */,
+				7CCE9FFA1F2B69440055B12C /* OutgoingView.xib */,
 				7CCE9FFD1F2B6CA50055B12C /* IncomeAddViewController.h */,
 				7CCE9FFE1F2B6CA50055B12C /* IncomeAddViewController.m */,
 				7CCEA0001F2B6CB60055B12C /* OutgoingAddViewController.h */,
 				7CCEA0011F2B6CB60055B12C /* OutgoingAddViewController.m */,
 			);
-			name = DetailView;
+			name = AddDataView;
 			sourceTree = "<group>";
 		};
 		FDDB66AB52D3B160E24E37C0 /* Pods */ = {

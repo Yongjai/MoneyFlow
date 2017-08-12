@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Income.h"
+
 
 @interface IncomeAddViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
+@property NSArray *categoryArray;
+@property Income *editSomething;
+@property BOOL isEdit;
 
 @end

@@ -8,17 +8,20 @@
 //ViewController
 #import "MainViewController.h"
 #import "IncomeAddViewController.h"
+#import "IncomeTableViewCell.h"
 #import "OutgoingAddViewController.h"
 #import "OutgoingTableViewCell.h"
-#import "IncomeTableViewCell.h"
 
-//Realm Data Model
+//Realm
 #import "Income.h"
 #import "Outgoing.h"
 #import <Realm/Realm.h>
 
 
-@interface MainViewController ()
+@interface MainViewController () {
+    OutgoingAddViewController *outgoingAddViewController;
+    IncomeAddViewController *incomeAddViewController;
+}
 @end
 
 @implementation MainViewController {
@@ -28,14 +31,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self calculateBalance];
+    outgoingAddViewController.isEdit = YES;
+    incomeAddViewController.isEdit = YES;
 
     incomeList = [Income allObjects];
     outgoingList = [Outgoing allObjects];
 
     [self presentFirstCalendar];
-    
-    incomeList = [Income allObjects];
-    outgoingList = [Outgoing allObjects];
     
     NSNotificationCenter *incomeNoti = [NSNotificationCenter defaultCenter];
     [incomeNoti addObserver:self selector:@selector(reloadIncomeTableView) name:@"INCOME_ADDED" object:nil];
@@ -88,10 +91,6 @@
     
     for (int startDay = 1; startDay <= _dayNum; startDay++) {
         UIButton *dayNumBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-        
-//        if (startDay % 2 == 0) {
-//            dayNumBtn.backgroundColor = [UIColor colorWithRed:214.0f/255.0f green:214.0f/255.0f blue:214.0f/255.0f alpha:1.0];
-//        }
         
         dayNumBtn.layer.borderWidth = 1.0f;
         dayNumBtn.layer.borderColor = [UIColor grayColor].CGColor;
@@ -204,19 +203,31 @@
     if ([tableView isEqual:_outgoingTableView]) {
         OutgoingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         Outgoing *outgoings = [outgoingList objectAtIndex:indexPath.row];
-        cell.priceLabel.text = outgoings.price;
+        cell.priceLabel.text = [NSString stringWithFormat:@"%ld", (long)outgoings.price];
         cell.categoryLabel.text = outgoings.category;
     
         return cell;
     } else {
         IncomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         Income *incomes = [incomeList objectAtIndex:indexPath.row];
-        cell.priceLabel.text = incomes.price;
+        cell.priceLabel.text = [NSString stringWithFormat:@"%ld" ,(long)incomes.price];
         cell.categoryLabel.text = incomes.category;
         
         return cell;
     }
 }
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+////    if ([tableView isEqual:_outgoingTableView]) {
+//        Outgoing *outgoings = [outgoingList objectAtIndex:indexPath.row];
+//        outgoingAddViewController.editSomething = outgoings;
+//        [self presentViewController:outgoingAddViewController animated:YES completion:nil];
+////    } else {
+////        Income *incomes = [incomeList objectAtIndex:indexPath.row];
+////        incomeAddViewController.editSomething = incomes;
+////        [self presentViewController:outgoingAddViewController animated:YES completion:nil];
+////    }
+//}
 
 - (void)reloadIncomeTableView {
     [_incomeTableView reloadData];
@@ -239,10 +250,32 @@
     [self presentViewController:incomeVC animated:YES completion:nil];
 }
 
-
 - (IBAction)test:(id)sender {
     [self viewDidLoad];
 }
+
+////////////////////
+// Calculate Data //
+////////////////////
+
+- (void)calculateBalance {
+//    Income *totalIncomes = [Income objectsWhere:@"price"];
+//    Outgoing *totalOutgoings = [Outgoing objectsWhere:@"price"];
+//    int sum;
+    RLMResults<Income *> *incomes;
+    RLMResults<Outgoing *> *outgoings = [Outgoing objectsWhere:@"price.@sum"];
+//    incomes.filter
+//    [incomes [NSPredicate predicateWithFormat: @"expenses.@avg.doubleValue < 200"]];
+    NSPredicate *income = [NSPredicate predicateWithFormat: @"incomeList.price.@sum"];
+    
+    NSLog(@"%@", income);
+//    NSLog(@"%@", outgoings);
+    
+//    sum = incomes
+
+}
+
+
 
 
 @end

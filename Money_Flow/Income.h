@@ -13,7 +13,7 @@
 
 @property NSString *uuid;
 @property NSDate* time;
-@property NSString* price;
+@property NSInteger price;
 @property NSString* category;
 
 - (void)incomeAdd;

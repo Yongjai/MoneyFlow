@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Outgoing.h"
 
 @interface OutgoingAddViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
+@property NSArray *categoryArray;
+@property Outgoing *editSomething;
+@property BOOL isEdit;
 
 @end

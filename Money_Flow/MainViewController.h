@@ -15,7 +15,7 @@
 @property NSUInteger month;
 @property NSUInteger year;
 
-@property (weak, nonatomic) IBOutlet UITableView *outputTableView;
-@property (weak, nonatomic) IBOutlet UITableView *inputTableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end

@@ -7,10 +7,9 @@
 //
 //ViewController
 #import "MainViewController.h"
-#import "IncomeTableViewCell.h"
-#import "OutgoingTableViewCell.h"
 #import "IncomeAddViewController.h"
 #import "OutgoingAddViewController.h"
+#import "OutgoingTableViewCell.h"
 
 //Realm Data Model
 #import "Income.h"
@@ -28,8 +27,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _inputTableView.dataSource = self;
-    _outputTableView.dataSource = self;
+
+    incomeList = [Income allObjects];
+    outgoingList = [Outgoing allObjects];
+
     [self presentFirstCalendar];
     
     incomeList = [Income allObjects];
@@ -39,10 +40,9 @@
     [incomeNoti addObserver:self selector:@selector(reloadIncomeTableView) name:@"INCOME_ADDED" object:nil];
     
     NSNotificationCenter *outgoingNoti = [NSNotificationCenter defaultCenter];
-    [outgoingNoti addObserver:self selector:@selector(reloadOutgoingTableView) name:@"OUTGOING_ADDED" object:nil];
+    [outgoingNoti addObserver:self selector:@selector(reload) name:@"OUTGOING_ADDED" object:nil];
     
-    [self reloadIncomeTableView];
-    [self reloadOutgoingTableView];
+    NSLog(@"test");
 
 }
 
@@ -184,52 +184,28 @@
 ////////////////////
 // TableView Part //
 ////////////////////
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger rows = 0;
-    
-    if (tableView == self.inputTableView) {
-        rows = incomeList.count;
-    }
-    if (tableView == self.outputTableView) {
-        rows = outgoingList.count;
-    }
-    return rows;
+    return [outgoingList count];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    static NSString *outputCellIdentifier = @"outgoingCell";
-    static NSString *inputCellIdentifier = @"incomeCell";
+    static NSString *cellIdenfier =@"Cell";
+    Outgoing *outgoings = [outgoingList objectAtIndex:indexPath.row];
+    OutgoingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdenfier forIndexPath:indexPath];
     
-    OutgoingTableViewCell *outgoingCell = [tableView dequeueReusableCellWithIdentifier:outputCellIdentifier forIndexPath:indexPath];
-    IncomeTableViewCell *incomeCell = [tableView dequeueReusableCellWithIdentifier:inputCellIdentifier forIndexPath:indexPath];
+    cell.priceLabel.text = outgoings.price;
     
-    if (tableView == self.outputTableView) {
-        Outgoing *outgoings = [outgoingList objectAtIndex:indexPath.row];
-        cell = [tableView dequeueReusableCellWithIdentifier:outputCellIdentifier forIndexPath:indexPath];
-        outgoingCell.outgoingPriceLabel.text = outgoings.price;
-        outgoingCell.outgoingCategoryLabel.text = outgoings.category;
-    }
-    if (tableView == self.inputTableView) {
-        Income *incomes = [incomeList objectAtIndex:indexPath.row];
-        cell = [tableView dequeueReusableCellWithIdentifier:inputCellIdentifier forIndexPath:indexPath];
-        incomeCell.incomePriceLabel.text = incomes.price;
-        incomeCell.incomeCategoryLabel.text = incomes.category;
-    }
     return  cell;
 }
 
-- (void) reloadIncomeTableView {
-    [_inputTableView reloadData];
-}
 
-- (void) reloadOutgoingTableView {
-    [_outputTableView reloadData];
-}
 
 ////////////////
 // Add Button //

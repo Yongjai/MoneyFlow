@@ -15,12 +15,12 @@
 		7C362C091F111ED9001DD528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C362C071F111ED9001DD528 /* LaunchScreen.storyboard */; };
 		7C362C141F111ED9001DD528 /* Money_FlowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C362C131F111ED9001DD528 /* Money_FlowTests.m */; };
 		7C362C1F1F111ED9001DD528 /* Money_FlowUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C362C1E1F111ED9001DD528 /* Money_FlowUITests.m */; };
+		7CC95E6E1F3AE01C00B35AC5 /* OutgoingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC95E6D1F3AE01C00B35AC5 /* OutgoingTableViewCell.m */; };
+		7CC95E711F3AE02900B35AC5 /* IncomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC95E701F3AE02900B35AC5 /* IncomeTableViewCell.m */; };
 		7CCE9FAE1F2967C00055B12C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCE9FAD1F2967C00055B12C /* MainViewController.m */; };
 		7CCE9FEA1F2B53D20055B12C /* Income.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCE9FE91F2B53D20055B12C /* Income.m */; };
 		7CCE9FED1F2B54010055B12C /* Outgoing.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCE9FEC1F2B54010055B12C /* Outgoing.m */; };
 		7CCE9FF01F2B5E7B0055B12C /* IncomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCE9FEF1F2B5E7B0055B12C /* IncomeView.xib */; };
-		7CCE9FF61F2B66C20055B12C /* OutgoingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCE9FF51F2B66C20055B12C /* OutgoingTableViewCell.m */; };
-		7CCE9FF91F2B66D80055B12C /* IncomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCE9FF81F2B66D80055B12C /* IncomeTableViewCell.m */; };
 		7CCE9FFB1F2B69440055B12C /* OutgoingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCE9FFA1F2B69440055B12C /* OutgoingView.xib */; };
 		7CCE9FFF1F2B6CA50055B12C /* IncomeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCE9FFE1F2B6CA50055B12C /* IncomeAddViewController.m */; };
 		7CCEA0021F2B6CB60055B12C /* OutgoingAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCEA0011F2B6CB60055B12C /* OutgoingAddViewController.m */; };
@@ -61,6 +61,10 @@
 		7C362C1A1F111ED9001DD528 /* Money_FlowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Money_FlowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C362C1E1F111ED9001DD528 /* Money_FlowUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Money_FlowUITests.m; sourceTree = "<group>"; };
 		7C362C201F111ED9001DD528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CC95E6C1F3AE01C00B35AC5 /* OutgoingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutgoingTableViewCell.h; sourceTree = "<group>"; };
+		7CC95E6D1F3AE01C00B35AC5 /* OutgoingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutgoingTableViewCell.m; sourceTree = "<group>"; };
+		7CC95E6F1F3AE02900B35AC5 /* IncomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomeTableViewCell.h; sourceTree = "<group>"; };
+		7CC95E701F3AE02900B35AC5 /* IncomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomeTableViewCell.m; sourceTree = "<group>"; };
 		7CCE9FAC1F2967C00055B12C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		7CCE9FAD1F2967C00055B12C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		7CCE9FE81F2B53D20055B12C /* Income.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Income.h; sourceTree = "<group>"; };
@@ -68,10 +72,6 @@
 		7CCE9FEB1F2B54010055B12C /* Outgoing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outgoing.h; sourceTree = "<group>"; };
 		7CCE9FEC1F2B54010055B12C /* Outgoing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outgoing.m; sourceTree = "<group>"; };
 		7CCE9FEF1F2B5E7B0055B12C /* IncomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IncomeView.xib; path = ../IncomeView.xib; sourceTree = "<group>"; };
-		7CCE9FF41F2B66C20055B12C /* OutgoingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutgoingTableViewCell.h; sourceTree = "<group>"; };
-		7CCE9FF51F2B66C20055B12C /* OutgoingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutgoingTableViewCell.m; sourceTree = "<group>"; };
-		7CCE9FF71F2B66D80055B12C /* IncomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomeTableViewCell.h; sourceTree = "<group>"; };
-		7CCE9FF81F2B66D80055B12C /* IncomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomeTableViewCell.m; sourceTree = "<group>"; };
 		7CCE9FFA1F2B69440055B12C /* OutgoingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OutgoingView.xib; path = ../OutgoingView.xib; sourceTree = "<group>"; };
 		7CCE9FFD1F2B6CA50055B12C /* IncomeAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomeAddViewController.h; sourceTree = "<group>"; };
 		7CCE9FFE1F2B6CA50055B12C /* IncomeAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomeAddViewController.m; sourceTree = "<group>"; };
@@ -188,10 +188,10 @@
 			children = (
 				7CCE9FAC1F2967C00055B12C /* MainViewController.h */,
 				7CCE9FAD1F2967C00055B12C /* MainViewController.m */,
-				7CCE9FF41F2B66C20055B12C /* OutgoingTableViewCell.h */,
-				7CCE9FF51F2B66C20055B12C /* OutgoingTableViewCell.m */,
-				7CCE9FF71F2B66D80055B12C /* IncomeTableViewCell.h */,
-				7CCE9FF81F2B66D80055B12C /* IncomeTableViewCell.m */,
+				7CC95E6C1F3AE01C00B35AC5 /* OutgoingTableViewCell.h */,
+				7CC95E6D1F3AE01C00B35AC5 /* OutgoingTableViewCell.m */,
+				7CC95E6F1F3AE02900B35AC5 /* IncomeTableViewCell.h */,
+				7CC95E701F3AE02900B35AC5 /* IncomeTableViewCell.m */,
 			);
 			name = MainView;
 			sourceTree = "<group>";
@@ -433,12 +433,12 @@
 				7CCE9FED1F2B54010055B12C /* Outgoing.m in Sources */,
 				7C362BFB1F111ED9001DD528 /* AppDelegate.m in Sources */,
 				7C362C041F111ED9001DD528 /* Money_Flow.xcdatamodeld in Sources */,
+				7CC95E711F3AE02900B35AC5 /* IncomeTableViewCell.m in Sources */,
 				7CCEA0021F2B6CB60055B12C /* OutgoingAddViewController.m in Sources */,
-				7CCE9FF91F2B66D80055B12C /* IncomeTableViewCell.m in Sources */,
 				7CCE9FEA1F2B53D20055B12C /* Income.m in Sources */,
+				7CC95E6E1F3AE01C00B35AC5 /* OutgoingTableViewCell.m in Sources */,
 				7C362BF81F111ED9001DD528 /* main.m in Sources */,
 				7CCE9FFF1F2B6CA50055B12C /* IncomeAddViewController.m in Sources */,
-				7CCE9FF61F2B66C20055B12C /* OutgoingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

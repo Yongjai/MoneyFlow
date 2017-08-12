@@ -2,7 +2,7 @@
 //  IncomeTableViewCell.m
 //  Money_Flow
 //
-//  Created by YongJai on 28/07/2017.
+//  Created by YongJai on 09/08/2017.
 //  Copyright © 2017 YongJai. All rights reserved.
 //
 

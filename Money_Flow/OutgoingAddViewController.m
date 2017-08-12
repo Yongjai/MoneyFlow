@@ -29,7 +29,7 @@
 }
 - (IBAction)clickedInputBtn:(id)sender {
     Outgoing *outgoing = [[Outgoing alloc] init];
-    outgoing.price = _priceTextField.text;
+    outgoing.price = self.priceTextField.text;
     outgoing.time = [NSDate date];
     outgoing.category = @"test";
     

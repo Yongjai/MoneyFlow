@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self calculateBalance];
+//    [self calculateBalance];
     outgoingAddViewController.isEdit = YES;
     incomeAddViewController.isEdit = YES;
 
@@ -257,23 +257,23 @@
 ////////////////////
 // Calculate Data //
 ////////////////////
-
-- (void)calculateBalance {
-//    Income *totalIncomes = [Income objectsWhere:@"price"];
-//    Outgoing *totalOutgoings = [Outgoing objectsWhere:@"price"];
-//    int sum;
-    RLMResults<Income *> *incomes;
-    RLMResults<Outgoing *> *outgoings = [Outgoing objectsWhere:@"price.@sum"];
-//    incomes.filter
-//    [incomes [NSPredicate predicateWithFormat: @"expenses.@avg.doubleValue < 200"]];
-    NSPredicate *income = [NSPredicate predicateWithFormat: @"incomeList.price.@sum"];
-    
-    NSLog(@"%@", income);
-//    NSLog(@"%@", outgoings);
-    
-//    sum = incomes
-
-}
+//
+//- (void)calculateBalance {
+////    Income *totalIncomes = [Income objectsWhere:@"price"];
+////    Outgoing *totalOutgoings = [Outgoing objectsWhere:@"price"];
+////    int sum;
+////    RLMResults<Income *> *incomes;
+////    RLMResults<Outgoing *> *outgoings = [Outgoing objectsWhere:@"price.@sum"];
+////    incomes.filter
+////    [incomes [NSPredicate predicateWithFormat: @"expenses.@avg.doubleValue < 200"]];
+//    NSPredicate *income = [NSPredicate predicateWithFormat: @"price.@sum"];
+//    
+//    NSLog(@"%@", income);
+////    NSLog(@"%@", outgoings);
+//    
+////    sum = incomes
+//
+//}
 
 
 

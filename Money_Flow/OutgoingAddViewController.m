@@ -35,26 +35,26 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 - (IBAction)clickedDismissBtn:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)clickedInputBtn:(id)sender {
+        Outgoing *outgoing = [[Outgoing alloc] init];
+        outgoing.price = [self.priceTextField.text intValue];
+        outgoing.time = [NSDate date];
+        outgoing.category = @"outgoing";
+    
+        if (!_isEdit) {
+            outgoing.uuid = [[NSUUID UUID] UUIDString];
+        } else {
+            outgoing.uuid = _editSomething.uuid;
+        }
+        [outgoing outgoingAdd];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        NSLog(@"%@", outgoing);
 }
 
-- (IBAction)clickedInputBtn:(id)sender {
-    Outgoing *outgoing = [[Outgoing alloc] init];
-    outgoing.price = [self.priceTextField.text intValue];
-    outgoing.time = [NSDate date];
-    outgoing.category = @"outgoing";
-    
-    if (!_isEdit) {
-        outgoing.uuid = [[NSUUID UUID] UUIDString];
-    } else {
-        outgoing.uuid = _editSomething.uuid;
-    }
-    [outgoing outgoingAdd];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"%@", outgoing);
-}
+
 
 - (void)drawCategoryBtn {
     _categoryArray = [[NSArray alloc] initWithObjects:@"음식", @"쇼핑", @"교통", @"자기개발", @"기타", nil];

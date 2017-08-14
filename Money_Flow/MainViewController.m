@@ -258,22 +258,28 @@
 // Calculate Data //
 ////////////////////
 //
-//- (void)calculateBalance {
-////    Income *totalIncomes = [Income objectsWhere:@"price"];
-////    Outgoing *totalOutgoings = [Outgoing objectsWhere:@"price"];
-////    int sum;
-////    RLMResults<Income *> *incomes;
-////    RLMResults<Outgoing *> *outgoings = [Outgoing objectsWhere:@"price.@sum"];
-////    incomes.filter
-////    [incomes [NSPredicate predicateWithFormat: @"expenses.@avg.doubleValue < 200"]];
+- (void)calculateBalance {
+
+    RLMResults<Income*> *incoming = [Income objectsWhere:@"price.@sum"];
+    NSLog(@"%@", incoming);
+
+//    RLMRealm.object
+//    Income *totalIncomes = [Income objectsWhere:@"price.@sum"];
+//    NSLog(@"%@", totalIncomes);
+//    Outgoing *totalOutgoings = [Outgoing objectsWhere:@"price"];
+//    int sum;
+//    RLMResults<Income *> *incomes;
+//    RLMResults<Outgoing *> *outgoings = [Outgoing objectsWhere:@"price.@sum"];
+//    incomes.filter
+//    [incomes [NSPredicate predicateWithFormat: @"expenses.@avg.doubleValue < 200"]];
 //    NSPredicate *income = [NSPredicate predicateWithFormat: @"price.@sum"];
 //    
 //    NSLog(@"%@", income);
-////    NSLog(@"%@", outgoings);
-//    
-////    sum = incomes
-//
-//}
+//    NSLog(@"%@", outgoings);
+    
+//    sum = incomes
+
+}
 
 
 

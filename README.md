@@ -24,10 +24,10 @@ In short, it's a household app. It will make you manage your money through a sim
 
 ## Development
 
-iOS only supported.
+Supported only iOS.
 
 * Xcode
-* UI consists of StoryBoard
+* UI consists of StoryBoard and XIB
 * Objective-C
 * Realm
 

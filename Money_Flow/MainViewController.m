@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self calculateBalance];
+    [self calculateBalance];
     outgoingAddViewController.isEdit = YES;
     incomeAddViewController.isEdit = YES;
 
@@ -259,9 +259,11 @@
 ////////////////////
 //
 - (void)calculateBalance {
+    NSPredicate *query = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"price.@sum"]];
+    
+//    RLMResults<Income*> *sum = [Income objectsWhere:@"%@", query];
+//    NSLog(@"%@", sum);
 
-    RLMResults<Income*> *incoming = [Income objectsWhere:@"price.@sum"];
-    NSLog(@"%@", incoming);
 
 //    RLMRealm.object
 //    Income *totalIncomes = [Income objectsWhere:@"price.@sum"];

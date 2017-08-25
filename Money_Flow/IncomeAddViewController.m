@@ -52,7 +52,9 @@
         income.uuid = _editSomething.uuid;
     }
     [income incomeAdd];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"added" object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
     NSLog(@"%@", income);
 
 }

@@ -45,9 +45,6 @@
     
     NSNotificationCenter *outgoingNoti = [NSNotificationCenter defaultCenter];
     [outgoingNoti addObserver:self selector:@selector(reloadOutgoingTableView) name:@"OUTGOING_ADDED" object:nil];
-    
-    NSLog(@"test");
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -257,30 +254,29 @@
 ////////////////////
 // Calculate Data //
 ////////////////////
-//
+
 - (void)calculateBalance {
-    NSPredicate *query = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"price.@sum"]];
+    RLMResults *incomePrices = [Income allObjects];
+    RLMResults *outgoingPrices = [Outgoing allObjects];
+
+    _incomeTotalArr = [incomePrices valueForKey:@"price"];
+    _outgoingTotalArr = [outgoingPrices valueForKey:@"price"];
+
+    NSInteger incomeSum = 0;
+    NSInteger outgoingSum = 0;
+
+    for (NSNumber *incomes in _incomeTotalArr) {
+        incomeSum += [incomes intValue];
+    }
     
-//    RLMResults<Income*> *sum = [Income objectsWhere:@"%@", query];
-//    NSLog(@"%@", sum);
-
-
-//    RLMRealm.object
-//    Income *totalIncomes = [Income objectsWhere:@"price.@sum"];
-//    NSLog(@"%@", totalIncomes);
-//    Outgoing *totalOutgoings = [Outgoing objectsWhere:@"price"];
-//    int sum;
-//    RLMResults<Income *> *incomes;
-//    RLMResults<Outgoing *> *outgoings = [Outgoing objectsWhere:@"price.@sum"];
-//    incomes.filter
-//    [incomes [NSPredicate predicateWithFormat: @"expenses.@avg.doubleValue < 200"]];
-//    NSPredicate *income = [NSPredicate predicateWithFormat: @"price.@sum"];
-//    
-//    NSLog(@"%@", income);
-//    NSLog(@"%@", outgoings);
+    for (NSNumber *outgoings in _outgoingTotalArr) {
+        outgoingSum += [outgoings intValue];
+    }
     
-//    sum = incomes
-
+    NSInteger balance = incomeSum - outgoingSum;
+    NSLog(@"%ld", (long)balance);
+    
+    _balanceLabel.text = [NSString stringWithFormat:@"%ld", balance];
 }
 
 

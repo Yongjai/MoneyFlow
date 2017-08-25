@@ -10,6 +10,7 @@
 
 @implementation Income {
     RLMRealm *realm;
+    NSMutableArray *incomeArray;
 }
 
 - (instancetype)init
@@ -40,6 +41,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"INCOME_REMOVED" object:nil];
     
 }
+
 
 
 @end

@@ -35,9 +35,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)clickedDismissBtn:(id)sender {
      [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (IBAction)clickedInputBtn:(id)sender {
         Outgoing *outgoing = [[Outgoing alloc] init];
         outgoing.price = [self.priceTextField.text intValue];
@@ -48,10 +50,12 @@
             outgoing.uuid = [[NSUUID UUID] UUIDString];
         } else {
             outgoing.uuid = _editSomething.uuid;
+ 
         }
-        [outgoing outgoingAdd];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        NSLog(@"%@", outgoing);
+    [outgoing outgoingAdd];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ADDED" object:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"%@", outgoing);
 }
 
 
@@ -65,7 +69,7 @@
         //        button.layer.borderWidth = 1.0f;
         button.layer.borderColor = [UIColor greenColor].CGColor;
         button.backgroundColor = [UIColor greenColor];
-        button.frame = CGRectMake(xCoord, 270.0, 50.0, 30.0);
+        button.frame = CGRectMake(xCoord, 270, 50, 30);
         [button setTitle:[NSString stringWithFormat:@"%@", _categoryArray[i]] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [self.view addSubview:button];

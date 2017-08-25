@@ -11,6 +11,8 @@
 #import "IncomeTableViewCell.h"
 #import "OutgoingAddViewController.h"
 #import "OutgoingTableViewCell.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 //Realm
 #import "Income.h"
@@ -45,6 +47,9 @@
     
     NSNotificationCenter *outgoingNoti = [NSNotificationCenter defaultCenter];
     [outgoingNoti addObserver:self selector:@selector(reloadOutgoingTableView) name:@"OUTGOING_ADDED" object:nil];
+    
+    NSNotificationCenter *balanceLabelNoti = [NSNotificationCenter defaultCenter];
+    [balanceLabelNoti addObserver:self selector:@selector(viewDidLoad) name:@"ADDED" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,39 +76,58 @@
     int yVal = 40;
     int count = 1;
     
-    UILabel *yearMonth = [[UILabel alloc]initWithFrame:CGRectMake(112, 10, 150, 50)];
-    [yearMonth setFont:[UIFont systemFontOfSize:20]];
+    NSDateFormatter *day = [[NSDateFormatter alloc]init];
+    [day setDateFormat:@"YYYYMd"];
+    NSString *today = [day stringFromDate:[NSDate date]];
+    
+    UILabel *yearMonth = [[UILabel alloc]initWithFrame:CGRectMake(112, 15, 150, 50)];
+    [yearMonth setFont:[UIFont systemFontOfSize:30]];
     [yearMonth setText:[NSString stringWithFormat:@"%ld년 %ld월", (long)_year, (long)_month]];
     [yearMonth setTextColor:[UIColor blackColor]];
     yearMonth.textAlignment = NSTextAlignmentCenter;
     yearMonth.tag = 32;
     [self.view addSubview:yearMonth];
     
-    UILabel *dayName = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 375, 30)];
-    [dayName setFont:[UIFont systemFontOfSize:8]];
-    [dayName setText:[NSString stringWithFormat:@"일        월       화       수       목       금      토"]];
-    [dayName setTextColor:[UIColor blackColor]];
-    dayName.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:dayName];
+    for (int i = 0; i < 7; i ++) {
+        NSArray *dayNameArr = [NSArray arrayWithObjects:@"일", @"월", @"화", @"수", @"목", @"금", @"토", nil];
+        UILabel *dayNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(13 + (50*i), 50 , 40, 40)];
+        dayNameLabel.textAlignment = NSTextAlignmentCenter;
+        [dayNameLabel setFont:[UIFont systemFontOfSize:15]];
+        [dayNameLabel setText:dayNameArr[i]];
+        [dayNameLabel setTextColor:[UIColor grayColor]];
+        [self.view addSubview:dayNameLabel];
+    }
     
     for (int startDay = 1; startDay <= _dayNum; startDay++) {
         UIButton *dayNumBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-        
-        dayNumBtn.layer.borderWidth = 1.0f;
-        dayNumBtn.layer.borderColor = [UIColor grayColor].CGColor;
-        
+        NSString *date = [NSString stringWithFormat:@"%ld%ld%d", (long)_year, (long)_month, startDay];
         NSUInteger xCoord = (newWeekDay * 50) + 13;
-        NSUInteger yCoord = (count * 40) + yVal;
+        NSUInteger yCoord = (count * 50) + yVal;
         newWeekDay++;
-        
+       
         if (newWeekDay > 6) {
             newWeekDay = 0;
             count++;
         }
         
-        dayNumBtn.frame = CGRectMake(xCoord, yCoord, 50, 40);
+        dayNumBtn.frame = CGRectMake(xCoord, yCoord, 40, 40);
         [dayNumBtn setTitle:[NSString stringWithFormat:@"%d",startDay]forState:UIControlStateNormal];
         [dayNumBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                // Shadow and Radius
+        dayNumBtn.layer.shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f] CGColor];
+        dayNumBtn.layer.shadowOffset = CGSizeMake(0, 2.0f);
+        dayNumBtn.layer.shadowOpacity = 1.0f;
+        dayNumBtn.layer.shadowRadius = 0.0f;
+        dayNumBtn.layer.masksToBounds = NO;
+        dayNumBtn.layer.cornerRadius = 4.0f;
+        
+        if ([date isEqualToString:today]) {
+            dayNumBtn.backgroundColor = [UIColor colorWithRed:237 green:115 blue:97 alpha:1.0f];
+        } else {
+            dayNumBtn.backgroundColor = [UIColor colorWithRed:171 green:178 blue:186 alpha:1.0f];
+
+        }
+    
         dayNumBtn.tag = startDay;
         
         [self.view addSubview:dayNumBtn];
@@ -247,9 +271,6 @@
     [self presentViewController:incomeVC animated:YES completion:nil];
 }
 
-- (IBAction)test:(id)sender {
-    [self viewDidLoad];
-}
 
 ////////////////////
 // Calculate Data //

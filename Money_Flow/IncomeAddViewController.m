@@ -52,7 +52,7 @@
         income.uuid = _editSomething.uuid;
     }
     [income incomeAdd];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"added" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ADDED" object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
     
     NSLog(@"%@", income);
@@ -71,7 +71,7 @@
 //        button.layer.borderWidth = 1.0f;
         button.layer.borderColor = [UIColor greenColor].CGColor;
         button.backgroundColor = [UIColor greenColor];
-        button.frame = CGRectMake(xCoord, 270.0, 50.0, 30.0);
+        button.frame = CGRectMake(xCoord, 270.0, 50, 30);
         [button setTitle:[NSString stringWithFormat:@"%@", _categoryArray[i]] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [self.view addSubview:button];

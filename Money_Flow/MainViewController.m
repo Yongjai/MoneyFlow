@@ -40,7 +40,10 @@
     incomeList = [Income allObjects];
     outgoingList = [Outgoing allObjects];
 
+    [self prevButton];
+    [self nextButton];
     [self presentFirstCalendar];
+
     
     NSNotificationCenter *incomeNoti = [NSNotificationCenter defaultCenter];
     [incomeNoti addObserver:self selector:@selector(reloadIncomeTableView) name:@"INCOME_ADDED" object:nil];
@@ -80,7 +83,7 @@
     [day setDateFormat:@"YYYYMd"];
     NSString *today = [day stringFromDate:[NSDate date]];
     
-    UILabel *yearMonth = [[UILabel alloc]initWithFrame:CGRectMake(112, 15, 150, 50)];
+    UILabel *yearMonth = [[UILabel alloc]initWithFrame:CGRectMake(87, 15, 200, 50)];
     [yearMonth setFont:[UIFont systemFontOfSize:30]];
     [yearMonth setText:[NSString stringWithFormat:@"%ld년 %ld월", (long)_year, (long)_month]];
     [yearMonth setTextColor:[UIColor blackColor]];
@@ -90,7 +93,7 @@
     
     for (int i = 0; i < 7; i ++) {
         NSArray *dayNameArr = [NSArray arrayWithObjects:@"일", @"월", @"화", @"수", @"목", @"금", @"토", nil];
-        UILabel *dayNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(13 + (50*i), 50 , 40, 40)];
+        UILabel *dayNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(13 + (50 * i), 50 , 40, 40)];
         dayNameLabel.textAlignment = NSTextAlignmentCenter;
         [dayNameLabel setFont:[UIFont systemFontOfSize:15]];
         [dayNameLabel setText:dayNameArr[i]];
@@ -102,7 +105,7 @@
         UIButton *dayNumBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
         NSString *date = [NSString stringWithFormat:@"%ld%ld%d", (long)_year, (long)_month, startDay];
         NSUInteger xCoord = (newWeekDay * 50) + 13;
-        NSUInteger yCoord = (count * 50) + yVal;
+        NSUInteger yCoord = (count * 45) + yVal;
         newWeekDay++;
        
         if (newWeekDay > 6) {
@@ -122,10 +125,9 @@
         dayNumBtn.layer.cornerRadius = 4.0f;
         
         if ([date isEqualToString:today]) {
-            dayNumBtn.backgroundColor = [UIColor colorWithRed:237 green:115 blue:97 alpha:1.0f];
+            dayNumBtn.backgroundColor = [UIColor redColor];
         } else {
             dayNumBtn.backgroundColor = [UIColor colorWithRed:171 green:178 blue:186 alpha:1.0f];
-
         }
     
         dayNumBtn.tag = startDay;
@@ -145,7 +147,7 @@
 
 - (void)prevButton {
     UIButton *prevBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [prevBtn setFrame:CGRectMake(30, 50, 55, 55)];
+    [prevBtn setFrame:CGRectMake(30, 15, 55, 55)];
     [prevBtn setTitle:@"<< prev" forState:UIControlStateNormal];
     [prevBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [prevBtn addTarget:self action:@selector(prev:) forControlEvents:UIControlEventTouchUpInside];
@@ -155,7 +157,7 @@
 
 - (void)nextButton {
     UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [nextBtn setFrame:CGRectMake(290, 50, 55, 55)];
+    [nextBtn setFrame:CGRectMake(290, 15, 55, 55)];
     [nextBtn setTitle:@"next >>" forState:UIControlStateNormal];
     [nextBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [nextBtn addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];

@@ -226,6 +226,10 @@
     if ([tableView isEqual:_outgoingTableView]) {
         OutgoingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         Outgoing *outgoings = [outgoingList objectAtIndex:indexPath.row];
+        cell.priceLabel.layer.cornerRadius = 10;
+        cell.priceLabel.clipsToBounds = YES;
+        cell.categoryLabel.layer.cornerRadius = 10;
+        cell.categoryLabel.clipsToBounds = YES;
         cell.priceLabel.text = [NSString stringWithFormat:@"%ld", (long)outgoings.price];
         cell.categoryLabel.text = outgoings.category;
     
@@ -233,6 +237,10 @@
     } else {
         IncomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         Income *incomes = [incomeList objectAtIndex:indexPath.row];
+        cell.priceLabel.layer.cornerRadius = 10;
+        cell.priceLabel.clipsToBounds = YES;
+        cell.categoryLabel.layer.cornerRadius = 10;
+        cell.categoryLabel.clipsToBounds = YES;
         cell.priceLabel.text = [NSString stringWithFormat:@"%ld" ,(long)incomes.price];
         cell.categoryLabel.text = incomes.category;
         
@@ -297,9 +305,7 @@
     }
     
     NSInteger balance = incomeSum - outgoingSum;
-    NSLog(@"%ld", (long)balance);
-    
-    _balanceLabel.text = [NSString stringWithFormat:@"%ld", balance];
+    NSLog(@"%ld", (long)balance);    
 }
 
 

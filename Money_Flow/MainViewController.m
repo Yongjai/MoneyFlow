@@ -44,7 +44,7 @@
     [self nextButton];
     [self presentFirstCalendar];
 
-    
+
     NSNotificationCenter *incomeNoti = [NSNotificationCenter defaultCenter];
     [incomeNoti addObserver:self selector:@selector(reloadIncomeTableView) name:@"INCOME_ADDED" object:nil];
     
@@ -248,17 +248,23 @@
     }
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-////    if ([tableView isEqual:_outgoingTableView]) {
-//        Outgoing *outgoings = [outgoingList objectAtIndex:indexPath.row];
-//        outgoingAddViewController.editSomething = outgoings;
-//        [self presentViewController:outgoingAddViewController animated:YES completion:nil];
-////    } else {
-////        Income *incomes = [incomeList objectAtIndex:indexPath.row];
-////        incomeAddViewController.editSomething = incomes;
-////        [self presentViewController:outgoingAddViewController animated:YES completion:nil];
-////    }
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([tableView isEqual:_outgoingTableView]) {
+        Outgoing *outgoings = [outgoingList objectAtIndex:indexPath.row];
+        outgoingAddViewController.editSomething = outgoings;
+//        NSLog(@"%@", outgoingAddViewController.editSomething);
+//        NSLog(@"%@", outgoings);
+        OutgoingAddViewController *outgoingVC = [[OutgoingAddViewController alloc] initWithNibName:@"OutgoingView" bundle:nil];
+        outgoingVC.isEdit = YES;
+        [self presentViewController:outgoingVC animated:YES completion:nil];
+    } else {
+        Income *incomes = [incomeList objectAtIndex:indexPath.row];
+        incomeAddViewController.editSomething = incomes;
+        IncomeAddViewController *incomeVC = [[IncomeAddViewController alloc] initWithNibName:@"IncomeView" bundle:nil];
+        incomeVC.isEdit = YES;
+        [self presentViewController:incomeVC animated:YES completion:nil];
+    }
+}
 
 - (void)reloadIncomeTableView {
     [_incomeTableView reloadData];
@@ -272,14 +278,16 @@
 // Add Button //
 ///////////////
 - (IBAction)clickedOutgoingAddBtn:(id)sender {
-    OutgoingAddViewController* outgoingVC = [[OutgoingAddViewController alloc] initWithNibName:@"OutgoingView" bundle:nil];
+    OutgoingAddViewController *outgoingVC = [[OutgoingAddViewController alloc] initWithNibName:@"OutgoingView" bundle:nil];
     [self presentViewController:outgoingVC animated:YES completion:nil];
 }
 
 - (IBAction)clickedIncomeAddBtn:(id)sender {
-    IncomeAddViewController* incomeVC = [[IncomeAddViewController alloc] initWithNibName:@"IncomeView" bundle:nil];
+    IncomeAddViewController *incomeVC = [[IncomeAddViewController alloc] initWithNibName:@"IncomeView" bundle:nil];
     [self presentViewController:incomeVC animated:YES completion:nil];
 }
+
+
 
 
 ////////////////////
@@ -305,6 +313,7 @@
     }
     
     NSInteger balance = incomeSum - outgoingSum;
+    _balanceLabel.text = [NSString stringWithFormat:@"%ld", balance];
     NSLog(@"%ld", (long)balance);    
 }
 

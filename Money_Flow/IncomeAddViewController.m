@@ -18,18 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawCategoryBtn];
-    
-    if(_editSomething){
+    NSLog(@"dnsjkfnkjd");
+    if (_isEdit){
         self.priceTextField.text = [NSString stringWithFormat:@"%ld", (long)_editSomething.price];
+        NSLog(@"edit");
     }
+
     // Do any additional setup after loading the view.
 }
-
-//- (void)viewWillAppear:(BOOL)animated {
-//    if(_editSomething){
-//        self.priceTextField.text = _editSomething.price;
-//    }
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -46,12 +42,13 @@
     income.time = [NSDate date];
     income.category = @"income";
     
+    [income incomeAdd];
+    
     if (!_isEdit) {
         income.uuid = [[NSUUID UUID] UUIDString];
     } else {
         income.uuid = _editSomething.uuid;
     }
-    [income incomeAdd];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ADDED" object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
     

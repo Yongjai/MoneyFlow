@@ -14,22 +14,15 @@
 
 @implementation OutgoingAddViewController
 
-
-
-////Bug Report////
-//셀 선택해서 수정하는 기능을 추가하다가 갑자기 outgoingView가 까맣게 변함//
-//완전히 까맣게 변하는 것도 아니라서 이상함... 마치 위에 까만 뷰를 껴놓은것처럼 변함//
-//////////////////
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawCategoryBtn];
-    if(_editSomething){
+    if(_isEdit) {
         self.priceTextField.text = [NSString stringWithFormat:@"%ld", (long)_editSomething.price];
     }
     // Do any additional setup after loading the view.
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -41,23 +34,25 @@
 }
 
 - (IBAction)clickedInputBtn:(id)sender {
-        Outgoing *outgoing = [[Outgoing alloc] init];
-        outgoing.price = [self.priceTextField.text intValue];
-        outgoing.time = [NSDate date];
-        outgoing.category = @"outgoing";
+    Outgoing *outgoing = [[Outgoing alloc] init];
+    outgoing.price = [self.priceTextField.text intValue];
+    outgoing.time = [NSDate date];
+    outgoing.category = @"outgoing";
     
-        if (!_isEdit) {
-            outgoing.uuid = [[NSUUID UUID] UUIDString];
-        } else {
-            outgoing.uuid = _editSomething.uuid;
- 
-        }
+    if (!_isEdit) {
+        outgoing.uuid = [[NSUUID UUID] UUIDString];
+        NSLog(@"not editting status");
+    } else {
+        outgoing.uuid = _editSomething.uuid;
+        NSLog(@"edit Test");
+    }
+    
     [outgoing outgoingAdd];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ADDED" object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
     NSLog(@"%@", outgoing);
 }
-
 
 
 - (void)drawCategoryBtn {
@@ -66,7 +61,6 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         button.tag = i;
         NSUInteger xCoord = (i * 60) + 50;
-        //        button.layer.borderWidth = 1.0f;
         button.layer.borderColor = [UIColor greenColor].CGColor;
         button.backgroundColor = [UIColor greenColor];
         button.frame = CGRectMake(xCoord, 270, 50, 30);

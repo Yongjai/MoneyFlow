@@ -116,7 +116,6 @@
         dayNumBtn.frame = CGRectMake(xCoord, yCoord, 40, 40);
         [dayNumBtn setTitle:[NSString stringWithFormat:@"%d",startDay]forState:UIControlStateNormal];
         [dayNumBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                // Shadow and Radius
         dayNumBtn.layer.shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f] CGColor];
         dayNumBtn.layer.shadowOffset = CGSizeMake(0, 2.0f);
         dayNumBtn.layer.shadowOpacity = 1.0f;
@@ -266,6 +265,7 @@
     }
 }
 
+
 - (void)reloadIncomeTableView {
     [_incomeTableView reloadData];
 }
@@ -286,8 +286,6 @@
     IncomeAddViewController *incomeVC = [[IncomeAddViewController alloc] initWithNibName:@"IncomeView" bundle:nil];
     [self presentViewController:incomeVC animated:YES completion:nil];
 }
-
-
 
 
 ////////////////////
@@ -316,8 +314,6 @@
     _balanceLabel.text = [NSString stringWithFormat:@"%ld", balance];
     NSLog(@"%ld", (long)balance);    
 }
-
-
 
 
 @end

@@ -42,13 +42,14 @@
     income.time = [NSDate date];
     income.category = @"income";
     
-    [income incomeAdd];
-    
     if (!_isEdit) {
         income.uuid = [[NSUUID UUID] UUIDString];
     } else {
         income.uuid = _editSomething.uuid;
     }
+    
+    [income incomeAdd];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ADDED" object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
     

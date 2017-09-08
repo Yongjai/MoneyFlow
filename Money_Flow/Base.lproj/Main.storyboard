@@ -12,7 +12,7 @@
         <!--Graph-->
         <scene sceneID="gXB-94-COT">
             <objects>
-                <viewController id="hdx-Be-MJY" sceneMemberID="viewController">
+                <viewController id="hdx-Be-MJY" customClass="LineGraphViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LpO-Xj-7YJ"/>
                         <viewControllerLayoutGuide type="bottom" id="VrJ-CO-RfY"/>

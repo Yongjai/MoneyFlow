@@ -30,7 +30,7 @@
 }
 
 - (IBAction)clickedDismissBtn:(id)sender {
-     [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)clickedInputBtn:(id)sender {
@@ -48,10 +48,9 @@
     }
     
     [outgoing outgoingAdd];
-
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ADDED" object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"%@", outgoing);
 }
 
 
@@ -72,13 +71,13 @@
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

@@ -52,9 +52,6 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ADDED" object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-    NSLog(@"%@", income);
-
 }
 
 - (void)drawCategoryBtn {
@@ -66,7 +63,6 @@
         NSUInteger xCoord = (i * 60) + 50;
         
         
-//        button.layer.borderWidth = 1.0f;
         button.layer.borderColor = [UIColor greenColor].CGColor;
         button.backgroundColor = [UIColor greenColor];
         button.frame = CGRectMake(xCoord, 270.0, 50, 30);

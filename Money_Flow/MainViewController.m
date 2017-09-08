@@ -36,15 +36,21 @@
     [self calculateBalance];
     outgoingAddViewController.isEdit = YES;
     incomeAddViewController.isEdit = YES;
-
+    
     incomeList = [Income allObjects];
     outgoingList = [Outgoing allObjects];
-
-    [self prevButton];
-    [self nextButton];
+    
     [self presentFirstCalendar];
-
-
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(prev:)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+    
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(next:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRight];
+    
+    
     NSNotificationCenter *incomeNoti = [NSNotificationCenter defaultCenter];
     [incomeNoti addObserver:self selector:@selector(reloadIncomeTableView) name:@"INCOME_ADDED" object:nil];
     
@@ -107,7 +113,7 @@
         NSUInteger xCoord = (newWeekDay * 50) + 13;
         NSUInteger yCoord = (count * 45) + yVal;
         newWeekDay++;
-       
+        
         if (newWeekDay > 6) {
             newWeekDay = 0;
             count++;
@@ -128,7 +134,7 @@
         } else {
             dayNumBtn.backgroundColor = [UIColor colorWithRed:171 green:178 blue:186 alpha:1.0f];
         }
-    
+        
         dayNumBtn.tag = startDay;
         
         [self.view addSubview:dayNumBtn];
@@ -144,25 +150,25 @@
     [self createCalendar];
 }
 
-- (void)prevButton {
-    UIButton *prevBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [prevBtn setFrame:CGRectMake(30, 15, 55, 55)];
-    [prevBtn setTitle:@"<< prev" forState:UIControlStateNormal];
-    [prevBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [prevBtn addTarget:self action:@selector(prev:) forControlEvents:UIControlEventTouchUpInside];
-    prevBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [self.view addSubview:prevBtn];
-}
-
-- (void)nextButton {
-    UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [nextBtn setFrame:CGRectMake(290, 15, 55, 55)];
-    [nextBtn setTitle:@"next >>" forState:UIControlStateNormal];
-    [nextBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [nextBtn addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
-    nextBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [self.view addSubview:nextBtn];
-}
+//- (void)prevButton {
+//    UIButton *prevBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [prevBtn setFrame:CGRectMake(30, 15, 55, 55)];
+//    [prevBtn setTitle:@"<< prev" forState:UIControlStateNormal];
+//    [prevBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [prevBtn addTarget:self action:@selector(prev:) forControlEvents:UIControlEventTouchUpInside];
+//    prevBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//    [self.view addSubview:prevBtn];
+//}
+//
+//- (void)nextButton {
+//    UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [nextBtn setFrame:CGRectMake(290, 15, 55, 55)];
+//    [nextBtn setTitle:@"next >>" forState:UIControlStateNormal];
+//    [nextBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [nextBtn addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
+//    nextBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+//    [self.view addSubview:nextBtn];
+//}
 
 - (void)next:(id)sender {
     _month++;
@@ -171,9 +177,9 @@
 }
 
 - (void)prev:(id)sender {
-        _month--;
-        [self removeTag];
-        [self updateCalNow];
+    _month--;
+    [self removeTag];
+    [self updateCalNow];
 }
 
 - (void)updateCalNow {
@@ -186,6 +192,7 @@
     }
     [self createCalendar];
 }
+
 
 - (NSUInteger)getCurrentDateInfo:(NSDate *)myDate {
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -231,7 +238,7 @@
         cell.categoryLabel.clipsToBounds = YES;
         cell.priceLabel.text = [NSString stringWithFormat:@"%ld", (long)outgoings.price];
         cell.categoryLabel.text = outgoings.category;
-    
+        
         return cell;
     } else {
         IncomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
@@ -251,8 +258,6 @@
     if ([tableView isEqual:_outgoingTableView]) {
         Outgoing *outgoings = [outgoingList objectAtIndex:indexPath.row];
         outgoingAddViewController.editSomething = outgoings;
-//        NSLog(@"%@", outgoingAddViewController.editSomething);
-//        NSLog(@"%@", outgoings);
         OutgoingAddViewController *outgoingVC = [[OutgoingAddViewController alloc] initWithNibName:@"OutgoingView" bundle:nil];
         outgoingVC.isEdit = YES;
         [self presentViewController:outgoingVC animated:YES completion:nil];
@@ -295,13 +300,13 @@
 - (void)calculateBalance {
     RLMResults *incomePrices = [Income allObjects];
     RLMResults *outgoingPrices = [Outgoing allObjects];
-
+    
     _incomeTotalArr = [incomePrices valueForKey:@"price"];
     _outgoingTotalArr = [outgoingPrices valueForKey:@"price"];
-
+    
     NSInteger incomeSum = 0;
     NSInteger outgoingSum = 0;
-
+    
     for (NSNumber *incomes in _incomeTotalArr) {
         incomeSum += [incomes intValue];
     }
@@ -312,7 +317,6 @@
     
     NSInteger balance = incomeSum - outgoingSum;
     _balanceLabel.text = [NSString stringWithFormat:@"%ld", balance];
-    NSLog(@"%ld", (long)balance);    
 }
 
 

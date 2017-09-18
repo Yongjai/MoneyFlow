@@ -64,6 +64,8 @@
     for(int i = 0; i < [_categoryArray count]; i++) {
         button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         button.tag = i;
+        
+        NSLog(@"%ld", button.tag);
         NSUInteger xCoord = (i * 60) + 50;
         button.layer.borderColor = [UIColor greenColor].CGColor;
         button.backgroundColor = [UIColor greenColor];
@@ -75,10 +77,12 @@
     }
 }
 
+
 - (IBAction)categoryButtonClicked:(id)sender {
     NSLog(@"%@", button.titleLabel);
     
 }
+
 
 
 

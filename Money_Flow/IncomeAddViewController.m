@@ -18,13 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawCategoryBtn];
-    NSLog(@"dnsjkfnkjd");
     if (_isEdit){
         self.priceTextField.text = [NSString stringWithFormat:@"%ld", (long)_editSomething.price];
         NSLog(@"edit");
     }
-
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

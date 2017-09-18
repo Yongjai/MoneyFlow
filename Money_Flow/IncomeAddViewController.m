@@ -61,8 +61,7 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         button.tag = i;
         NSUInteger xCoord = (i * 60) + 50;
-        
-        
+
         button.layer.borderColor = [UIColor greenColor].CGColor;
         button.backgroundColor = [UIColor greenColor];
         button.frame = CGRectMake(xCoord, 270.0, 50, 30);

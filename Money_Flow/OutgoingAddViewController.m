@@ -8,7 +8,11 @@
 
 #import "OutgoingAddViewController.h"
 
-@interface OutgoingAddViewController ()
+@interface OutgoingAddViewController () {
+    UIButton *button;
+
+}
+
 
 @end
 
@@ -20,6 +24,7 @@
     if(_isEdit) {
         self.priceTextField.text = [NSString stringWithFormat:@"%ld", (long)_editSomething.price];
     }
+    
     // Do any additional setup after loading the view.
 }
 
@@ -57,7 +62,7 @@
 - (void)drawCategoryBtn {
     _categoryArray = [[NSArray alloc] initWithObjects:@"음식", @"쇼핑", @"교통", @"자기개발", @"기타", nil];
     for(int i = 0; i < [_categoryArray count]; i++) {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         button.tag = i;
         NSUInteger xCoord = (i * 60) + 50;
         button.layer.borderColor = [UIColor greenColor].CGColor;
@@ -65,9 +70,17 @@
         button.frame = CGRectMake(xCoord, 270, 50, 30);
         [button setTitle:[NSString stringWithFormat:@"%@", _categoryArray[i]] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(categoryButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
     }
 }
+
+- (IBAction)categoryButtonClicked:(id)sender {
+    NSLog(@"%@", button.titleLabel);
+    
+}
+
+
 
 
 /*

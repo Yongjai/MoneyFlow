@@ -150,26 +150,6 @@
     [self createCalendar];
 }
 
-//- (void)prevButton {
-//    UIButton *prevBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    [prevBtn setFrame:CGRectMake(30, 15, 55, 55)];
-//    [prevBtn setTitle:@"<< prev" forState:UIControlStateNormal];
-//    [prevBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [prevBtn addTarget:self action:@selector(prev:) forControlEvents:UIControlEventTouchUpInside];
-//    prevBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-//    [self.view addSubview:prevBtn];
-//}
-//
-//- (void)nextButton {
-//    UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    [nextBtn setFrame:CGRectMake(290, 15, 55, 55)];
-//    [nextBtn setTitle:@"next >>" forState:UIControlStateNormal];
-//    [nextBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [nextBtn addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
-//    nextBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-//    [self.view addSubview:nextBtn];
-//}
-
 - (void)next:(id)sender {
     _month++;
     [self removeTag];

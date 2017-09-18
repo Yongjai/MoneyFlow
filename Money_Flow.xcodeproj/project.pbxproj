@@ -15,6 +15,7 @@
 		7C362C091F111ED9001DD528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C362C071F111ED9001DD528 /* LaunchScreen.storyboard */; };
 		7C362C141F111ED9001DD528 /* Money_FlowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C362C131F111ED9001DD528 /* Money_FlowTests.m */; };
 		7C362C1F1F111ED9001DD528 /* Money_FlowUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C362C1E1F111ED9001DD528 /* Money_FlowUITests.m */; };
+		7CB8D8C41F6FDF3A009F05C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB8D8C31F6FDF3A009F05C5 /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		7CBBAB481F5147950002DFFA /* LineGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBBAB471F5147950002DFFA /* LineGraphViewController.m */; };
 		7CC95E6E1F3AE01C00B35AC5 /* OutgoingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC95E6D1F3AE01C00B35AC5 /* OutgoingTableViewCell.m */; };
 		7CC95E711F3AE02900B35AC5 /* IncomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC95E701F3AE02900B35AC5 /* IncomeTableViewCell.m */; };
@@ -62,6 +63,7 @@
 		7C362C1A1F111ED9001DD528 /* Money_FlowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Money_FlowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C362C1E1F111ED9001DD528 /* Money_FlowUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Money_FlowUITests.m; sourceTree = "<group>"; };
 		7C362C201F111ED9001DD528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CB8D8C31F6FDF3A009F05C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7CBBAB461F5147950002DFFA /* LineGraphViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineGraphViewController.h; sourceTree = "<group>"; };
 		7CBBAB471F5147950002DFFA /* LineGraphViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LineGraphViewController.m; sourceTree = "<group>"; };
 		7CC95E6C1F3AE01C00B35AC5 /* OutgoingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutgoingTableViewCell.h; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CB8D8C41F6FDF3A009F05C5 /* Foundation.framework in Frameworks */,
 				D5D4A92FC1B3440F4D7AA210 /* libPods-Money_Flow.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +116,7 @@
 		6D3E8149D65B3C69BF49B03C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7CB8D8C31F6FDF3A009F05C5 /* Foundation.framework */,
 				40EA45AB30B0E2CADB663F61 /* libPods-Money_Flow.a */,
 			);
 			name = Frameworks;

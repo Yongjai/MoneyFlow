@@ -41,8 +41,12 @@
     
     if (!_isEdit) {
         income.uuid = [[NSUUID UUID] UUIDString];
+        NSLog(@"not editting status");
+
     } else {
         income.uuid = _editSomething.uuid;
+        NSLog(@"edit Test");
+
     }
     
     [income incomeAdd];

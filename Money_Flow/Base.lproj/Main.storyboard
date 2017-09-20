@@ -20,13 +20,23 @@
                     <view key="view" contentMode="scaleToFill" id="t1t-sy-rLx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qNY-Et-SUS" customClass="BEMSimpleLineGraphView">
+                                <rect key="frame" x="16" y="28" width="343" height="290"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Graph" id="18Y-fc-qJX"/>
+                    <connections>
+                        <outlet property="graphView" destination="qNY-Et-SUS" id="Hvc-vM-j5k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eYS-Fo-mbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2062" y="-903"/>
+            <point key="canvasLocation" x="2061.5999999999999" y="-903.59820089955031"/>
         </scene>
         <!--Setting-->
         <scene sceneID="QDR-Di-jQB">

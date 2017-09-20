@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3689CA9781966DF2077737D8 /* Pods_Money_Flow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D43983278D0E7573C65D64 /* Pods_Money_Flow.framework */; };
 		7C362BF81F111ED9001DD528 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C362BF71F111ED9001DD528 /* main.m */; };
 		7C362BFB1F111ED9001DD528 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C362BFA1F111ED9001DD528 /* AppDelegate.m */; };
 		7C362C011F111ED9001DD528 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C362BFF1F111ED9001DD528 /* Main.storyboard */; };
@@ -28,7 +29,6 @@
 		7CCE9FFB1F2B69440055B12C /* OutgoingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCE9FFA1F2B69440055B12C /* OutgoingView.xib */; };
 		7CCE9FFF1F2B6CA50055B12C /* IncomeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCE9FFE1F2B6CA50055B12C /* IncomeAddViewController.m */; };
 		7CCEA0021F2B6CB60055B12C /* OutgoingAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCEA0011F2B6CB60055B12C /* OutgoingAddViewController.m */; };
-		D5D4A92FC1B3440F4D7AA210 /* libPods-Money_Flow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40EA45AB30B0E2CADB663F61 /* libPods-Money_Flow.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		40EA45AB30B0E2CADB663F61 /* libPods-Money_Flow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Money_Flow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		08D43983278D0E7573C65D64 /* Pods_Money_Flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Money_Flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C362BF31F111ED9001DD528 /* Money_Flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Money_Flow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C362BF71F111ED9001DD528 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7C362BF91F111ED9001DD528 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CB8D8C41F6FDF3A009F05C5 /* Foundation.framework in Frameworks */,
-				D5D4A92FC1B3440F4D7AA210 /* libPods-Money_Flow.a in Frameworks */,
+				3689CA9781966DF2077737D8 /* Pods_Money_Flow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				7CB8D8C31F6FDF3A009F05C5 /* Foundation.framework */,
-				40EA45AB30B0E2CADB663F61 /* libPods-Money_Flow.a */,
+				08D43983278D0E7573C65D64 /* Pods_Money_Flow.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -417,9 +417,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Money_Flow/Pods-Money_Flow-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BEMSimpleLineGraph/BEMSimpleLineGraph.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMSimpleLineGraph.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

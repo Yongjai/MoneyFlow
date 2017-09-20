@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>BEMSimpleLineGraph.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Money_Flow.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4A216342CB6204E90E3DEAC26C813818</key>
+		<key>2072D1DF5BFD9E8B5826A6936EED91A9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9E371714ABB704F3848A2664FBC12BC2</key>
+		<key>5D15AE16BEE6396E4DDC77C1E5153237</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>757959BC950C2BE12EDE2255D941DE98</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -236,13 +236,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([tableView isEqual:_outgoingTableView]) {
-        Outgoing *outgoings = [outgoingList objectAtIndex:indexPath.row];
+        Outgoing *outgoings = [[Outgoing alloc] init];
+        outgoings = [outgoingList objectAtIndex:indexPath.row];
+        NSLog(@"%@", outgoings);
+        
         outgoingAddViewController.editSomething = outgoings;
         OutgoingAddViewController *outgoingVC = [[OutgoingAddViewController alloc] initWithNibName:@"OutgoingView" bundle:nil];
         outgoingVC.isEdit = YES;
         [self presentViewController:outgoingVC animated:YES completion:nil];
     } else {
-        Income *incomes = [incomeList objectAtIndex:indexPath.row];
+        Income *incomes = [[Income alloc]init];
+        incomes = [incomeList objectAtIndex:indexPath.row];
         incomeAddViewController.editSomething = incomes;
         IncomeAddViewController *incomeVC = [[IncomeAddViewController alloc] initWithNibName:@"IncomeView" bundle:nil];
         incomeVC.isEdit = YES;

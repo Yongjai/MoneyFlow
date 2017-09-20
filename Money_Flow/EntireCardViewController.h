@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EntireCardViewController : UIViewController
+@interface EntireCardViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end

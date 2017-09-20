@@ -17,6 +17,7 @@
 		7C362C1F1F111ED9001DD528 /* Money_FlowUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C362C1E1F111ED9001DD528 /* Money_FlowUITests.m */; };
 		7CB8D8C41F6FDF3A009F05C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB8D8C31F6FDF3A009F05C5 /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		7CB8D8C71F710C3C009F05C5 /* EntireCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8D8C61F710C3C009F05C5 /* EntireCardViewController.m */; };
+		7CB8D8CF1F72AD45009F05C5 /* EntireCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8D8CE1F72AD45009F05C5 /* EntireCardTableViewCell.m */; };
 		7CBBAB481F5147950002DFFA /* LineGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBBAB471F5147950002DFFA /* LineGraphViewController.m */; };
 		7CC95E6E1F3AE01C00B35AC5 /* OutgoingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC95E6D1F3AE01C00B35AC5 /* OutgoingTableViewCell.m */; };
 		7CC95E711F3AE02900B35AC5 /* IncomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC95E701F3AE02900B35AC5 /* IncomeTableViewCell.m */; };
@@ -67,6 +68,8 @@
 		7CB8D8C31F6FDF3A009F05C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7CB8D8C51F710C3C009F05C5 /* EntireCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntireCardViewController.h; sourceTree = "<group>"; };
 		7CB8D8C61F710C3C009F05C5 /* EntireCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntireCardViewController.m; sourceTree = "<group>"; };
+		7CB8D8CD1F72AD45009F05C5 /* EntireCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntireCardTableViewCell.h; sourceTree = "<group>"; };
+		7CB8D8CE1F72AD45009F05C5 /* EntireCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntireCardTableViewCell.m; sourceTree = "<group>"; };
 		7CBBAB461F5147950002DFFA /* LineGraphViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineGraphViewController.h; sourceTree = "<group>"; };
 		7CBBAB471F5147950002DFFA /* LineGraphViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LineGraphViewController.m; sourceTree = "<group>"; };
 		7CC95E6C1F3AE01C00B35AC5 /* OutgoingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutgoingTableViewCell.h; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 			children = (
 				7CB8D8C51F710C3C009F05C5 /* EntireCardViewController.h */,
 				7CB8D8C61F710C3C009F05C5 /* EntireCardViewController.m */,
+				7CB8D8CD1F72AD45009F05C5 /* EntireCardTableViewCell.h */,
+				7CB8D8CE1F72AD45009F05C5 /* EntireCardTableViewCell.m */,
 			);
 			name = EntireCardView;
 			sourceTree = "<group>";
@@ -456,6 +461,7 @@
 				7CCE9FEA1F2B53D20055B12C /* Income.m in Sources */,
 				7CC95E6E1F3AE01C00B35AC5 /* OutgoingTableViewCell.m in Sources */,
 				7CB8D8C71F710C3C009F05C5 /* EntireCardViewController.m in Sources */,
+				7CB8D8CF1F72AD45009F05C5 /* EntireCardTableViewCell.m in Sources */,
 				7C362BF81F111ED9001DD528 /* main.m in Sources */,
 				7CCE9FFF1F2B6CA50055B12C /* IncomeAddViewController.m in Sources */,
 			);

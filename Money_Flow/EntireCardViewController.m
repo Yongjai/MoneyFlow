@@ -7,6 +7,7 @@
 //
 
 #import "EntireCardViewController.h"
+#import "EntireCardTableViewCell.h"
 
 @interface EntireCardViewController ()
 

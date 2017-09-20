@@ -8,12 +8,20 @@
 
 #import "EntireCardViewController.h"
 #import "EntireCardTableViewCell.h"
+#import "Income.h"
+#import "Outgoing.h"
+#import <Realm/Realm.h>
+
 
 @interface EntireCardViewController ()
 
 @end
 
-@implementation EntireCardViewController
+@implementation EntireCardViewController{
+    RLMResults<Income*> *incomeList;
+    RLMResults<Outgoing*> *outgoingList;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,6 +32,23 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//}
+//
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//
+//}
+//
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    }
+//
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//}
+
 
 /*
 #pragma mark - Navigation

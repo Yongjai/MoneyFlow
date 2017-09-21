@@ -9,5 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface EntireCardViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UIButton *outgoingBtn;
+@property (weak, nonatomic) IBOutlet UIButton *incomeBtn;
+
+//@property (weak, nonatomic) NSMutableDictionary *incomeDataArr;
+//@property (weak, nonatomic) NSMutableDictionary *outgoingDataArr;
+
+
+@property (weak, nonatomic) NSString *string;
+
+@property (nonatomic) int count;
+
 
 @end

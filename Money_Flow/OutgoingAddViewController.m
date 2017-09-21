@@ -48,13 +48,14 @@
         NSLog(@"not editting status");
     } else {
         outgoing.uuid = _editSomething.uuid;
+        NSLog(@"dpdpdpdp %@", _editSomething.uuid);
         NSLog(@"edit Test");
     }
     
-    [outgoing outgoingAdd];
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ADDED" object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [outgoing outgoingAdd];
 
 }
 

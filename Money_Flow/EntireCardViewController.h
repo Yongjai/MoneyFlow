@@ -16,9 +16,8 @@
 //@property (weak, nonatomic) NSMutableDictionary *outgoingDataArr;
 
 
-@property (weak, nonatomic) NSString *string;
+@property (nonatomic) BOOL isOutgoing;
 
-@property (nonatomic) int count;
 
 
 @end

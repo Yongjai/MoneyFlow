@@ -30,8 +30,8 @@
     [super viewDidLoad];
     incomeList = [Income allObjects];
     outgoingList = [Outgoing allObjects];
-    _count = 30;
-    _string = @"A";
+    _isOutgoing = YES;
+//    NSLog(@"%@", [incomeList objectsWhere:@"Income.@price > 1000"]);
 
     
     // Do any additional setup after loading the view.
@@ -39,7 +39,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [CardTableView reloadData];
-    NSLog(@"리로드");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,7 +56,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([_string isEqualToString:@"A"]) {
+    if (_isOutgoing) {
         return outgoingList.count;
     } else {
         return incomeList.count;
@@ -66,7 +65,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([_string isEqualToString:@"A"]) {
+    if (_isOutgoing) {
         EntireCardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         Outgoing *outgoings = [outgoingList objectAtIndex:indexPath.row];
         cell.priceLabel.layer.cornerRadius = 10;
@@ -74,11 +73,11 @@
         cell.categoryLabel.layer.cornerRadius = 10;
         cell.categoryLabel.clipsToBounds = YES;
         cell.titleLabel.text = @"지출";
-        cell.dateLabel.text = [NSString stringWithFormat:@"%@" ,outgoings.time];
-
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+        cell.dateLabel.text = [formatter stringFromDate: outgoings.time];
         cell.priceLabel.text = [NSString stringWithFormat:@"%ld ₩", (long)outgoings.price];
         cell.categoryLabel.text = outgoings.category;
-        NSLog(@"얘도 불림?");
         
         return cell;
     } else {
@@ -89,10 +88,11 @@
         cell.categoryLabel.layer.cornerRadius = 10;
         cell.categoryLabel.clipsToBounds = YES;
         cell.titleLabel.text = @"수입";
-        cell.dateLabel.text = [NSString stringWithFormat:@"%@" ,incomes.time];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+        cell.dateLabel.text = [formatter stringFromDate: incomes.time];
         cell.priceLabel.text = [NSString stringWithFormat:@"%ld ₩" ,(long)incomes.price];
         cell.categoryLabel.text = incomes.category;
-        NSLog(@"얘도 불림?22222");
 
         return cell;
     }
@@ -104,17 +104,14 @@
 }
 
 - (IBAction)outgoingBtnClicked:(id)sender {
-    _string = @"A";
-    NSLog(@"%@", _string);
+    _isOutgoing = YES;
 
     [self reloadCardTable];
 }
 
 
 - (IBAction)incomeBtnClicked:(id)sender {
-    _count = 100;
-    _string = @"B";
-    NSLog(@"%@", _string);
+    _isOutgoing = NO;
 
     [self reloadCardTable];
 }

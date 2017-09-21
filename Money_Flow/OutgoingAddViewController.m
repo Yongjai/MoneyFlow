@@ -41,8 +41,8 @@
     Outgoing *outgoing = [[Outgoing alloc] init];
     outgoing.price = [self.priceTextField.text intValue];
     outgoing.time = [NSDate date];
-    outgoing.category = @"outgoing";
-    
+    outgoing.category = _category;
+
     if (!_isEdit) {
         outgoing.uuid = [[NSUUID UUID] UUIDString];
         NSLog(@"not editting status");
@@ -59,6 +59,10 @@
 
 }
 
+- (void)clickedCategoryBtn:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    _category = btn.titleLabel.text;
+}
 
 - (void)drawCategoryBtn {
     _categoryArray = [[NSArray alloc] initWithObjects:@"음식", @"쇼핑", @"교통", @"자기개발", @"기타", nil];
@@ -71,7 +75,9 @@
         button.frame = CGRectMake(xCoord, 270, 50, 30);
         [button setTitle:[NSString stringWithFormat:@"%@", _categoryArray[i]] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(categoryButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [button addTarget:self action:@selector(clickedCategoryBtn:) forControlEvents:UIControlEventTouchUpInside];
+        
         [self.view addSubview:button];
     }
 }
@@ -81,9 +87,6 @@
     NSLog(@"%@", button.titleLabel);
     
 }
-
-
-
 
 
 /*

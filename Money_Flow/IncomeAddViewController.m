@@ -14,7 +14,6 @@
     
 @implementation IncomeAddViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawCategoryBtn];
@@ -33,11 +32,17 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+- (void)clickedCategoryBtn:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    _category = btn.titleLabel.text;
+}
+
 - (IBAction)clickedInputBtn:(id)sender {
     Income *income = [[Income alloc] init];
     income.price = [_priceTextField.text intValue];
     income.time = [NSDate date];
-    income.category = @"income";
+    income.category = _category;
     
     if (!_isEdit) {
         income.uuid = [[NSUUID UUID] UUIDString];
@@ -63,6 +68,7 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         button.tag = i;
         NSUInteger xCoord = (i * 60) + 50;
+        [button addTarget:self action:@selector(clickedCategoryBtn:) forControlEvents:UIControlEventTouchUpInside];
 
         button.layer.borderColor = [UIColor greenColor].CGColor;
         button.backgroundColor = [UIColor greenColor];

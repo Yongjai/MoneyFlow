@@ -15,7 +15,14 @@
 
 @property (strong, nonatomic) NSMutableArray *arrayOfIncomeValues;
 @property (strong, nonatomic) NSMutableArray *arrayOfOutgoingValues;
+@property (strong, nonatomic) NSMutableArray *arrayOfOutgoingDates;
+@property (strong, nonatomic) NSMutableArray *arrayOfIncomeDates;
 
 @property (strong, nonatomic) NSMutableArray *arrayOfDates;
+@property (weak, nonatomic) IBOutlet UILabel *labelValues;
+@property (weak, nonatomic) IBOutlet UILabel *labelDates;
+
+@property (nonatomic) BOOL isIncome;
+
 
 @end

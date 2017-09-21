@@ -28,9 +28,15 @@
     [super viewDidLoad];
     incomeList = [Income allObjects];
     outgoingList = [Outgoing allObjects];
+    _isIncome = YES;
+    
+//    RLMResults<Income *> *sortedPrice = [Income objectsWhere:@""];
+
     
     _arrayOfIncomeValues = [incomeList valueForKey:@"price"];
+    _arrayOfIncomeDates = [incomeList valueForKey:@"time"];
     _arrayOfOutgoingValues = [outgoingList valueForKey:@"price"];
+    _arrayOfOutgoingDates = [outgoingList valueForKey:@"time"];
     
     CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
     size_t num_locations = 2;
@@ -74,6 +80,11 @@
     // Do any additional setup after loading the view.
 }
 
+//- (void)viewWillAppear:(BOOL)animated {
+//    [_graphView setNeedsDisplay];
+//    NSLog(@"리로드");
+//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -81,53 +92,73 @@
 
 
 - (NSInteger)numberOfPointsInLineGraph:(BEMSimpleLineGraphView *)graph {
-    return (int)[self.arrayOfIncomeValues count];
-    
+    if (_isIncome) {
+        return (int)[self.arrayOfOutgoingValues count];
+    } else {
+        return (int)[self.arrayOfIncomeValues count];
+    }
 }
 
 - (CGFloat)lineGraph:(BEMSimpleLineGraphView *)graph valueForPointAtIndex:(NSInteger)index {
-    return [[self.arrayOfIncomeValues objectAtIndex:index] doubleValue];
+    if (_isIncome ) {
+        return [[self.arrayOfOutgoingValues objectAtIndex:index] doubleValue];
+    } else {
+        return [[self.arrayOfIncomeValues objectAtIndex:index] doubleValue];
+    }
 }
 
 - (NSInteger)numberOfGapsBetweenLabelsOnLineGraph:(BEMSimpleLineGraphView *)graph {
-    return 2;
+    return 1;
 }
 
-//- (NSString *)lineGraph:(BEMSimpleLineGraphView *)graph labelOnXAxisForIndex:(NSInteger)index {
-//    
-//    NSString *label = [self labelForDateAtIndex:index];
-//    return [label stringByReplacingOccurrencesOfString:@" " withString:@"\n"];
-//}
-//
-//- (void)lineGraph:(BEMSimpleLineGraphView *)graph didTouchGraphWithClosestIndex:(NSInteger)index {
-//    self.labelValues.text = [NSString stringWithFormat:@"%@", [self.arrayOfIncomeValues objectAtIndex:index]];
-//    self.labelDates.text = [NSString stringWithFormat:@"in %@", [self labelForDateAtIndex:index]];
-//}
-
-- (void)lineGraph:(BEMSimpleLineGraphView *)graph didReleaseTouchFromGraphWithClosestIndex:(CGFloat)index {
-    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.labelValues.alpha = 0.0;
-        self.labelDates.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        self.labelValues.text = [NSString stringWithFormat:@"%i", [[self.myGraph calculatePointValueSum] intValue]];
-        self.labelDates.text = [NSString stringWithFormat:@"between %@ and %@", [self labelForDateAtIndex:0], [self labelForDateAtIndex:self.arrayOfDates.count - 1]];
-        
-        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            self.labelValues.alpha = 1.0;
-            self.labelDates.alpha = 1.0;
-        } completion:nil];
-    }];
+- (NSString *)labelForOutgoingDateAtIndex:(NSInteger)index {
+    NSDate *date = self.arrayOfOutgoingDates[index];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"MM/dd";
+    NSString *label = [df stringFromDate:date];
+    return label;
 }
 
-- (void)lineGraphDidFinishLoading:(BEMSimpleLineGraphView *)graph {
-    self.labelValues.text = [NSString stringWithFormat:@"%i", [[self.myGraph calculatePointValueSum] intValue]];
-    self.labelDates.text = [NSString stringWithFormat:@"between %@ and %@", [self labelForDateAtIndex:0], [self labelForDateAtIndex:self.arrayOfDates.count - 1]];
+
+- (NSString *)labelForIncomeDateAtIndex:(NSInteger)index {
+    NSDate *date = self.arrayOfIncomeDates[index];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"MM/dd";
+    NSString *label = [df stringFromDate:date];
+    return label;
 }
 
-- (CGFloat)lineGraph:(BEMSimpleLineGraphView *)graph valueForPointAtIndex:(NSInteger)index {
+// 여기서도 스트링 값으로 비교하지 말고 불타입으로 비교할 것.
+
+- (NSString *)lineGraph:(BEMSimpleLineGraphView *)graph labelOnXAxisForIndex:(NSInteger)index {
+    if (_isIncome) {
+        NSString *label1 = [self labelForOutgoingDateAtIndex:index];
+
+        return [label1 stringByReplacingOccurrencesOfString:@" " withString:@"\n"];
+    } else {
+        NSString *label2 = [self labelForIncomeDateAtIndex:index];
+
+        return [label2 stringByReplacingOccurrencesOfString:@" " withString:@"\n"];
+    }
+}
     
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy-MM-dd"];
+//    cell.dateLabel.text = [formatter stringFromDate: incomes.time];
+//
+
+
+- (IBAction)outgoingBtnClicked:(id)sender {
+    _isIncome = NO;
+    
+    [_graphView reloadGraph];
 }
 
+- (IBAction)incomeBtnClicked:(id)sender {
+    _isIncome = YES;
+    
+    [_graphView reloadGraph];
+}
 
 /*
 #pragma mark - Navigation

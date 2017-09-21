@@ -15,5 +15,6 @@
 @property NSArray *categoryArray;
 @property Income *editSomething;
 @property BOOL isEdit;
+@property (weak, nonatomic) NSString *category;
 
 @end

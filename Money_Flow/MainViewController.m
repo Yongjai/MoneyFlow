@@ -129,6 +129,8 @@
         dayNumBtn.layer.masksToBounds = NO;
         dayNumBtn.layer.cornerRadius = 4.0f;
         
+        [dayNumBtn addTarget:self action:@selector(clickedCalendarBtn:) forControlEvents:UIControlEventTouchUpInside];
+        
         if ([date isEqualToString:today]) {
             dayNumBtn.backgroundColor = [UIColor redColor];
         } else {
@@ -139,6 +141,11 @@
         
         [self.view addSubview:dayNumBtn];
     }
+}
+
+- (void)clickedCalendarBtn:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    NSLog(@"%@", btn);
 }
 
 - (void)presentFirstCalendar {

@@ -92,7 +92,7 @@
 
 
 - (NSInteger)numberOfPointsInLineGraph:(BEMSimpleLineGraphView *)graph {
-    if (_isIncome) {
+    if (!_isIncome) {
         return (int)[self.arrayOfOutgoingValues count];
     } else {
         return (int)[self.arrayOfIncomeValues count];
@@ -100,7 +100,7 @@
 }
 
 - (CGFloat)lineGraph:(BEMSimpleLineGraphView *)graph valueForPointAtIndex:(NSInteger)index {
-    if (_isIncome ) {
+    if (!_isIncome ) {
         return [[self.arrayOfOutgoingValues objectAtIndex:index] doubleValue];
     } else {
         return [[self.arrayOfIncomeValues objectAtIndex:index] doubleValue];
@@ -128,10 +128,9 @@
     return label;
 }
 
-// 여기서도 스트링 값으로 비교하지 말고 불타입으로 비교할 것.
 
 - (NSString *)lineGraph:(BEMSimpleLineGraphView *)graph labelOnXAxisForIndex:(NSInteger)index {
-    if (_isIncome) {
+    if (!_isIncome) {
         NSString *label1 = [self labelForOutgoingDateAtIndex:index];
 
         return [label1 stringByReplacingOccurrencesOfString:@" " withString:@"\n"];

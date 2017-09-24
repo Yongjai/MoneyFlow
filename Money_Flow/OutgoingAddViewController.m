@@ -62,6 +62,7 @@
 - (void)clickedCategoryBtn:(id)sender {
     UIButton *btn = (UIButton *)sender;
     _category = btn.titleLabel.text;
+    btn.backgroundColor = [UIColor redColor];
 }
 
 - (void)drawCategoryBtn {

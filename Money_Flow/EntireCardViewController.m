@@ -22,6 +22,7 @@
     RLMResults<Income*> *incomeList;
     RLMResults<Outgoing*> *outgoingList;
     __weak IBOutlet UITableView *CardTableView;
+    __weak IBOutlet UISegmentedControl *segmentedControl;
 }
 
 
@@ -97,24 +98,34 @@
         return cell;
     }
 }
+- (IBAction)segmentedCotrolClicked:(id)sender {
+    if (segmentedControl.selectedSegmentIndex == 0) {
+        _isOutgoing = YES;
+        [self reloadCardTable];
+    } else if(segmentedControl.selectedSegmentIndex == 1) {
+        _isOutgoing = NO;
+        [self reloadCardTable];
+    }
+}
+
 
 - (void) reloadCardTable {
     [CardTableView reloadData];
     [self viewWillAppear:YES];
 }
 
-- (IBAction)outgoingBtnClicked:(id)sender {
-    _isOutgoing = YES;
-
-    [self reloadCardTable];
-}
-
-
-- (IBAction)incomeBtnClicked:(id)sender {
-    _isOutgoing = NO;
-
-    [self reloadCardTable];
-}
+//- (IBAction)outgoingBtnClicked:(id)sender {
+//    _isOutgoing = YES;
+//
+//    [self reloadCardTable];
+//}
+//
+//
+//- (IBAction)incomeBtnClicked:(id)sender {
+//    _isOutgoing = NO;
+//
+//    [self reloadCardTable];
+//}
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="juD-sq-ylD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="juD-sq-ylD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -98,7 +98,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PvD-SI-tgQ" id="5pQ-Aq-k3B">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="147"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="147.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJ1-p6-l4a">
@@ -160,50 +160,24 @@
                                     <outlet property="delegate" destination="QhN-Ge-8C7" id="uF3-gg-h1S"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVB-ec-A4F">
-                                <rect key="frame" x="16" y="28" width="65" height="30"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Wwe-Nf-3Id">
+                                <rect key="frame" x="127" y="28" width="121" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.91420739889144897" green="0.82757210731506348" blue="0.77702885866165161" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="지출 보기">
-                                    <color key="titleColor" red="1" green="0.39478096625398085" blue="0.28585131156961141" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <segments>
+                                    <segment title="지출"/>
+                                    <segment title="수입"/>
+                                </segments>
                                 <connections>
-                                    <action selector="outgoingBtnClicked:" destination="QhN-Ge-8C7" eventType="touchUpInside" id="nWL-0W-rUc"/>
+                                    <action selector="segmentedCotrolClicked:" destination="QhN-Ge-8C7" eventType="valueChanged" id="eqe-7I-bGN"/>
                                 </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="많이 벌어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufD-Hm-HEB">
-                                <rect key="frame" x="294" y="23" width="65" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
-                                <color key="textColor" red="0.80205233134920628" green="0.67990581836657937" blue="0.65875435855912878" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="적게 쓰자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHc-TH-z5C">
-                                <rect key="frame" x="294" y="46" width="50" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
-                                <color key="textColor" red="0.80205233129999998" green="0.67990581839999997" blue="0.65875435859999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3QJ-yO-AP8">
-                                <rect key="frame" x="120" y="28" width="65" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.81486129760742188" green="0.89590603113174438" blue="0.91461968421936035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="수입 보기">
-                                    <color key="titleColor" red="0.39710327787495692" green="0.44857597708260621" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="incomeBtnClicked:" destination="QhN-Ge-8C7" eventType="touchUpInside" id="uDf-zF-5GN"/>
-                                </connections>
-                            </button>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.99993389844894409" green="1" blue="0.9998818039894104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Entire" id="Vt2-7b-ox6"/>
                     <connections>
                         <outlet property="CardTableView" destination="X0d-Bh-1ht" id="9yj-Uk-Q1E"/>
-                        <outlet property="incomeBtn" destination="3QJ-yO-AP8" id="n3X-U5-pkJ"/>
-                        <outlet property="outgoingBtn" destination="mVB-ec-A4F" id="i2B-QU-cyq"/>
+                        <outlet property="segmentedControl" destination="Wwe-Nf-3Id" id="MbG-OM-qsY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UM1-Cw-S1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -255,7 +229,7 @@
                                         <rect key="frame" x="0.0" y="28" width="182" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hft-1B-lVD" id="8yc-Be-1nI">
-                                            <rect key="frame" x="0.0" y="0.0" width="182" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="182" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="OLz-vY-QI9">
@@ -297,7 +271,7 @@
                                         <rect key="frame" x="0.0" y="28" width="176" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5pp-iW-96G" id="id4-Zc-9hZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="176" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="176" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="VGv-MO-EAU">

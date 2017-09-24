@@ -37,7 +37,6 @@
 
 - (void)clickedCategoryBtn:(id)sender {
     UIButton *btn = (UIButton *)sender;
-    NSLog(@"%@", sender);
     btn.backgroundColor = [UIColor redColor];
     _category = btn.titleLabel.text;
 }

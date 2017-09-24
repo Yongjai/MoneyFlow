@@ -78,7 +78,7 @@
         cell.titleLabel.text = @"지출";
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd"];
-        cell.dateLabel.text = [formatter stringFromDate: outgoings.time];
+        cell.dateLabel.text = [formatter stringFromDate:outgoings.time];
         cell.priceLabel.text = [NSString stringWithFormat:@"%ld ₩", (long)outgoings.price];
         cell.categoryLabel.text = outgoings.category;
         

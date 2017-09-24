@@ -40,8 +40,11 @@
     
     _arrayOfIncomeValues = [incomeList valueForKey:@"price"];
     _arrayOfIncomeDates = [incomeList valueForKey:@"time"];
+    _arrayOfIncomeCategory = [incomeList valueForKey:@"category"];
+    
     _arrayOfOutgoingValues = [outgoingList valueForKey:@"price"];
     _arrayOfOutgoingDates = [outgoingList valueForKey:@"time"];
+    _arrayOfOutgoingCategory = [outgoingList valueForKey:@"category"];
     
     CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
     size_t num_locations = 2;
@@ -70,7 +73,7 @@
     
     // Set graph color
     self.graphView.colorYaxisLabel = [UIColor whiteColor];
-    self.graphView.colorXaxisLabel = [UIColor whiteColor];
+    self.graphView.colorXaxisLabel = [UIColor blackColor];
 
 //    self.graphView.colorTop = [UIColor colorWithRed:224.0/255.0 green:224.0/255.0 blue:224.0/255.0 alpha:1.0];
 
@@ -107,9 +110,19 @@
 
 - (IBAction)segmentedControlClicked:(id)sender {
     if (segmentedControl.selectedSegmentIndex == 0) {
+        _arrayOfOutgoingValues = [[NSMutableArray alloc] init];
+        _arrayOfOutgoingDates = [[NSMutableArray alloc] init];
+        _arrayOfOutgoingValues = [outgoingList valueForKey:@"price"];
+        _arrayOfOutgoingDates = [outgoingList valueForKey:@"time"];
+        
         _isIncome = NO;
         [_graphView reloadGraph];
     } else if(segmentedControl.selectedSegmentIndex == 1) {
+        _arrayOfIncomeValues = [[NSMutableArray alloc] init];
+        _arrayOfIncomeDates = [[NSMutableArray alloc] init];
+        _arrayOfIncomeValues = [incomeList valueForKey:@"price"];
+        _arrayOfIncomeDates = [incomeList valueForKey:@"time"];
+        NSLog(@"%@", _arrayOfIncomeValues);
         _isIncome = YES;
         [_graphView reloadGraph];
     }
@@ -156,15 +169,31 @@
 - (NSString *)lineGraph:(BEMSimpleLineGraphView *)graph labelOnXAxisForIndex:(NSInteger)index {
     if (!_isIncome) {
         NSString *label1 = [self labelForOutgoingDateAtIndex:index];
-
         return [label1 stringByReplacingOccurrencesOfString:@" " withString:@"\n"];
     } else {
         NSString *label2 = [self labelForIncomeDateAtIndex:index];
-
         return [label2 stringByReplacingOccurrencesOfString:@" " withString:@"\n"];
     }
 }
-    
+
+
+- (void)lineGraph:(BEMSimpleLineGraphView *)graph didTouchGraphWithClosestIndex:(NSInteger)index {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    _labelWon.hidden = NO;
+    if (!_isIncome) {
+        self.labelPrice.text = [NSString stringWithFormat:@"%@", [self.arrayOfOutgoingValues objectAtIndex:index]];
+        self.labelCategory.text = [NSString stringWithFormat:@"%@", [self.arrayOfOutgoingCategory objectAtIndex:index]];
+//        cell.dateLabel.text = [formatter stringFromDate:outgoings.time];
+        self.labelDate.text = [formatter stringFromDate:[self.arrayOfOutgoingDates objectAtIndex:index]];
+    } else {
+        self.labelPrice.text = [NSString stringWithFormat:@"%@", [self.arrayOfIncomeValues objectAtIndex:index]];
+        self.labelCategory.text = [NSString stringWithFormat:@"%@", [self.arrayOfIncomeCategory objectAtIndex:index]];
+        self.labelDate.text = [formatter stringFromDate:[self.arrayOfIncomeDates objectAtIndex:index]];
+    }
+//    self.labelPrice.text = [NSString stringWithFormat:@"%@", [self.arrayOfV objectAtIndex:index]];
+//    self.labelCategory.text = [NSString stringWithFormat:@"in %@", [self labelForDateAtIndex:index]];
+}
 //    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 //    [formatter setDateFormat:@"yyyy-MM-dd"];
 //    cell.dateLabel.text = [formatter stringFromDate: incomes.time];

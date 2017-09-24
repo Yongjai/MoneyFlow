@@ -18,7 +18,6 @@
 @property (weak, nonatomic) NSMutableArray *incomeTotalArr;
 @property (weak, nonatomic) NSMutableArray *outgoingTotalArr;
 
-
 @property (weak, nonatomic) IBOutlet UITableView *outgoingTableView;
 @property (weak, nonatomic) IBOutlet UITableView *incomeTableView;
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;

@@ -14,15 +14,21 @@
 @property (weak, nonatomic) IBOutlet BEMSimpleLineGraphView *graphView;
 
 @property (strong, nonatomic) NSMutableArray *arrayOfIncomeValues;
-@property (strong, nonatomic) NSMutableArray *arrayOfOutgoingValues;
-@property (strong, nonatomic) NSMutableArray *arrayOfOutgoingDates;
+@property (strong, nonatomic) NSMutableArray *arrayOfIncomeCategory;
 @property (strong, nonatomic) NSMutableArray *arrayOfIncomeDates;
 
+@property (strong, nonatomic) NSMutableArray *arrayOfOutgoingValues;
+@property (strong, nonatomic) NSMutableArray *arrayOfOutgoingCategory;
+@property (strong, nonatomic) NSMutableArray *arrayOfOutgoingDates;
+
+
 @property (strong, nonatomic) NSMutableArray *arrayOfDates;
-@property (weak, nonatomic) IBOutlet UILabel *labelValues;
-@property (weak, nonatomic) IBOutlet UILabel *labelDates;
+@property (weak, nonatomic) IBOutlet UILabel *labelPrice;
+@property (weak, nonatomic) IBOutlet UILabel *labelCategory;
+@property (weak, nonatomic) IBOutlet UILabel *labelDate;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelWon;
 
 @property (nonatomic) BOOL isIncome;
-
 
 @end

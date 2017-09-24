@@ -7,6 +7,8 @@
 //
 
 #import "IncomeAddViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface IncomeAddViewController ()
 
@@ -35,6 +37,8 @@
 
 - (void)clickedCategoryBtn:(id)sender {
     UIButton *btn = (UIButton *)sender;
+    NSLog(@"%@", sender);
+    btn.backgroundColor = [UIColor redColor];
     _category = btn.titleLabel.text;
 }
 
@@ -70,8 +74,8 @@
         NSUInteger xCoord = (i * 60) + 50;
         [button addTarget:self action:@selector(clickedCategoryBtn:) forControlEvents:UIControlEventTouchUpInside];
 
-        button.layer.borderColor = [UIColor greenColor].CGColor;
-        button.backgroundColor = [UIColor greenColor];
+        button.layer.borderColor = [UIColor blackColor].CGColor;
+        button.backgroundColor = [UIColor grayColor];
         button.frame = CGRectMake(xCoord, 270.0, 50, 30);
         [button setTitle:[NSString stringWithFormat:@"%@", _categoryArray[i]] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];

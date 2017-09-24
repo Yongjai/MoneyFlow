@@ -58,7 +58,7 @@
     self.graphView.enableReferenceXAxisLines = YES;
     self.graphView.enableReferenceYAxisLines = YES;
     self.graphView.enableReferenceAxisFrame = YES;
-    
+
     // Draw an average line
     self.graphView.averageLine.enableAverageLine = YES;
     self.graphView.averageLine.alpha = 0.6;

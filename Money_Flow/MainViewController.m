@@ -42,11 +42,11 @@
     
     [self presentFirstCalendar];
     
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(prev:)];
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(next:)];
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:swipeLeft];
     
-    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(next:)];
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(prev:)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipeRight];
     
@@ -92,7 +92,7 @@
     UILabel *yearMonth = [[UILabel alloc]initWithFrame:CGRectMake(87, 15, 200, 50)];
     [yearMonth setFont:[UIFont systemFontOfSize:30]];
     [yearMonth setText:[NSString stringWithFormat:@"%ld년 %ld월", (long)_year, (long)_month]];
-    [yearMonth setTextColor:[UIColor blackColor]];
+    [yearMonth setTextColor:[UIColor grayColor]];
     yearMonth.textAlignment = NSTextAlignmentCenter;
     yearMonth.tag = 32;
     [self.view addSubview:yearMonth];
@@ -132,7 +132,7 @@
         [dayNumBtn addTarget:self action:@selector(clickedCalendarBtn:) forControlEvents:UIControlEventTouchUpInside];
         
         if ([date isEqualToString:today]) {
-            dayNumBtn.backgroundColor = [UIColor redColor];
+            dayNumBtn.backgroundColor = [UIColor grayColor];
         } else {
             dayNumBtn.backgroundColor = [UIColor colorWithRed:171 green:178 blue:186 alpha:1.0f];
         }

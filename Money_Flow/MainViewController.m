@@ -53,9 +53,12 @@
     
     NSNotificationCenter *incomeNoti = [NSNotificationCenter defaultCenter];
     [incomeNoti addObserver:self selector:@selector(reloadIncomeTableView) name:@"INCOME_ADDED" object:nil];
+    [incomeNoti addObserver:self selector:@selector(calculateBalance) name:@"INCOME_ADDED" object:nil];
     
     NSNotificationCenter *outgoingNoti = [NSNotificationCenter defaultCenter];
     [outgoingNoti addObserver:self selector:@selector(reloadOutgoingTableView) name:@"OUTGOING_ADDED" object:nil];
+    [outgoingNoti addObserver:self selector:@selector(calculateBalance) name:@"OUTGOING_ADDED" object:nil];
+
     
     NSNotificationCenter *balanceLabelNoti = [NSNotificationCenter defaultCenter];
     [balanceLabelNoti addObserver:self selector:@selector(viewDidLoad) name:@"ADDED" object:nil];

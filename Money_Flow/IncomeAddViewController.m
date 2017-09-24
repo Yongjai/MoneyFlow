@@ -78,7 +78,7 @@
         button.backgroundColor = [UIColor grayColor];
         button.frame = CGRectMake(xCoord, 270.0, 50, 30);
         [button setTitle:[NSString stringWithFormat:@"%@", _categoryArray[i]] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.view addSubview:button];
     }
 }

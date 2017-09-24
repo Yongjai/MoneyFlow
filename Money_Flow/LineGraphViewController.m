@@ -21,6 +21,7 @@
 @implementation LineGraphViewController{
     RLMResults<Income*> *incomeList;
     RLMResults<Outgoing*> *outgoingList;
+    __weak IBOutlet UISegmentedControl *segmentedControl;
 }
 
 
@@ -28,7 +29,11 @@
     [super viewDidLoad];
     incomeList = [Income allObjects];
     outgoingList = [Outgoing allObjects];
-    _isIncome = YES;
+    _isIncome = NO;
+//    [_graphView reloadGraph];
+
+    
+    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateSelected];
     
 //    RLMResults<Income *> *sortedPrice = [Income objectsWhere:@""];
 
@@ -48,6 +53,9 @@
     
     // Apply the gradient to the bottom portion of the graph
     self.graphView.gradientBottom = CGGradientCreateWithColorComponents(colorspace, components, locations, num_locations);
+    self.graphView.gradientTop = CGGradientCreateWithColorComponents(colorspace, components, locations, num_locations);
+
+
     
     // Enable and disable various graph properties and axis displays
     self.graphView.enableTouchReport = YES;
@@ -58,6 +66,13 @@
     self.graphView.enableReferenceXAxisLines = YES;
     self.graphView.enableReferenceYAxisLines = YES;
     self.graphView.enableReferenceAxisFrame = YES;
+    self.graphView.alphaTouchInputLine = 0.2;
+    
+    // Set graph color
+    self.graphView.colorYaxisLabel = [UIColor whiteColor];
+    self.graphView.colorXaxisLabel = [UIColor whiteColor];
+
+//    self.graphView.colorTop = [UIColor colorWithRed:224.0/255.0 green:224.0/255.0 blue:224.0/255.0 alpha:1.0];
 
     // Draw an average line
     self.graphView.averageLine.enableAverageLine = YES;
@@ -90,6 +105,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)segmentedControlClicked:(id)sender {
+    if (segmentedControl.selectedSegmentIndex == 0) {
+        _isIncome = NO;
+        [_graphView reloadGraph];
+    } else if(segmentedControl.selectedSegmentIndex == 1) {
+        _isIncome = YES;
+        [_graphView reloadGraph];
+    }
+}
 
 - (NSInteger)numberOfPointsInLineGraph:(BEMSimpleLineGraphView *)graph {
     if (!_isIncome) {
@@ -147,17 +171,17 @@
 //
 
 
-- (IBAction)outgoingBtnClicked:(id)sender {
-    _isIncome = NO;
-    
-    [_graphView reloadGraph];
-}
-
-- (IBAction)incomeBtnClicked:(id)sender {
-    _isIncome = YES;
-    
-    [_graphView reloadGraph];
-}
+//- (IBAction)outgoingBtnClicked:(id)sender {
+//    _isIncome = NO;
+//    
+//    [_graphView reloadGraph];
+//}
+//
+//- (IBAction)incomeBtnClicked:(id)sender {
+//    _isIncome = YES;
+//
+//    [_graphView reloadGraph];
+//}
 
 /*
 #pragma mark - Navigation

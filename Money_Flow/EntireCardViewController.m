@@ -32,7 +32,7 @@
     incomeList = [Income allObjects];
     outgoingList = [Outgoing allObjects];
     _isOutgoing = YES;
-    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]} forState:UIControlStateSelected];
+    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateSelected];
 
 //    NSLog(@"%@", [incomeList objectsWhere:@"Income.@price > 1000"]);
 

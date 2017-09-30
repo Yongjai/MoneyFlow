@@ -23,11 +23,11 @@ In short, it's a household app. It will make you manage your money through a sim
 
 ## In app
 
-![splash Screen](img/1.png) 
+![splash Screen](img/5.png) 
 
 #### This is the splash screen.
 
-![home](img/3.png) 
+![home](img/1.png) 
 
 #### This is the main home screen.
 
@@ -35,11 +35,11 @@ In short, it's a household app. It will make you manage your money through a sim
 
 #### You can add expenditure at this screen. (also, there is income add view)
 
-![card](img/4.png) 
+![card](img/3.png) 
 
 #### This screen is somewhat unnecessary, but I just put it.
 
-![graph](img/5.png) 
+![graph](img/4.png) 
 
 #### It shows at a glance through the graph.
 
